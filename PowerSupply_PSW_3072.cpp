@@ -475,9 +475,15 @@ void PowerSupply_PSW_3072::check_psstate()
     check_socket_state();
 
     if(isSocketOn) {
-        input << OUTPUTMODESTATUS;
-        output = socketProxy->command_inout("WriteAndRead",input);
-        output >> outState;
+        try {
+            input << OUTPUTMODESTATUS;
+            output = socketProxy->command_inout("WriteAndRead",input);
+            output >> outState;
+        } catch (Tango::DevFailed &e) {
+            Tango::Except::print_exception(e);
+            return;
+        }
+
         unsigned short isActive;
 
         try {
