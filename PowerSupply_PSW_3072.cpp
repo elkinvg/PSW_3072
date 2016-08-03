@@ -261,7 +261,7 @@ void PowerSupply_PSW_3072::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_li
 //--------------------------------------------------------
 /**
  *	Read attribute volt_meas related method
- *	Description: 
+ *	Description: the output voltage
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar
@@ -279,7 +279,7 @@ void PowerSupply_PSW_3072::read_volt_meas(Tango::Attribute &attr)
 //--------------------------------------------------------
 /**
  *	Read attribute curr_meas related method
- *	Description: 
+ *	Description: the output current
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar
@@ -297,7 +297,7 @@ void PowerSupply_PSW_3072::read_curr_meas(Tango::Attribute &attr)
 //--------------------------------------------------------
 /**
  *	Read attribute volt_level related method
- *	Description: 
+ *	Description: the voltage level in volts
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar
@@ -315,7 +315,7 @@ void PowerSupply_PSW_3072::read_volt_level(Tango::Attribute &attr)
 //--------------------------------------------------------
 /**
  *	Read attribute curr_level related method
- *	Description: 
+ *	Description: The current level in amps
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar

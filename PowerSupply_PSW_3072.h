@@ -152,7 +152,7 @@ public:
 
 /**
  *	Attribute volt_meas related methods
- *	Description: 
+ *	Description: the output voltage
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar
@@ -161,7 +161,7 @@ public:
 	virtual bool is_volt_meas_allowed(Tango::AttReqType type);
 /**
  *	Attribute curr_meas related methods
- *	Description: 
+ *	Description: the output current
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar
@@ -170,7 +170,7 @@ public:
 	virtual bool is_curr_meas_allowed(Tango::AttReqType type);
 /**
  *	Attribute volt_level related methods
- *	Description: 
+ *	Description: the voltage level in volts
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar
@@ -179,7 +179,7 @@ public:
 	virtual bool is_volt_level_allowed(Tango::AttReqType type);
 /**
  *	Attribute curr_level related methods
- *	Description: 
+ *	Description: The current level in amps
  *
  *	Data type:	Tango::DevDouble
  *	Attr type:	Scalar

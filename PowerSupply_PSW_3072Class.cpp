@@ -542,9 +542,9 @@ void PowerSupply_PSW_3072Class::attribute_factory(vector<Tango::Attr *> &att_lis
 	//	Attribute : volt_meas
 	volt_measAttrib	*volt_meas = new volt_measAttrib();
 	Tango::UserDefaultAttrProp	volt_meas_prop;
-	//	description	not set for volt_meas
-	//	label	not set for volt_meas
-	//	unit	not set for volt_meas
+	volt_meas_prop.set_description("the output voltage");
+	volt_meas_prop.set_label("OutputVvoltage");
+	volt_meas_prop.set_unit("V");
 	//	standard_unit	not set for volt_meas
 	//	display_unit	not set for volt_meas
 	//	format	not set for volt_meas
@@ -566,9 +566,9 @@ void PowerSupply_PSW_3072Class::attribute_factory(vector<Tango::Attr *> &att_lis
 	//	Attribute : curr_meas
 	curr_measAttrib	*curr_meas = new curr_measAttrib();
 	Tango::UserDefaultAttrProp	curr_meas_prop;
-	//	description	not set for curr_meas
-	//	label	not set for curr_meas
-	//	unit	not set for curr_meas
+	curr_meas_prop.set_description("the output current");
+	curr_meas_prop.set_label("OutputCurrent");
+	curr_meas_prop.set_unit("A");
 	//	standard_unit	not set for curr_meas
 	//	display_unit	not set for curr_meas
 	//	format	not set for curr_meas
@@ -590,9 +590,9 @@ void PowerSupply_PSW_3072Class::attribute_factory(vector<Tango::Attr *> &att_lis
 	//	Attribute : volt_level
 	volt_levelAttrib	*volt_level = new volt_levelAttrib();
 	Tango::UserDefaultAttrProp	volt_level_prop;
-	//	description	not set for volt_level
-	//	label	not set for volt_level
-	//	unit	not set for volt_level
+	volt_level_prop.set_description("the voltage level in volts");
+	volt_level_prop.set_label("VoltageLevel");
+	volt_level_prop.set_unit("V");
 	//	standard_unit	not set for volt_level
 	//	display_unit	not set for volt_level
 	//	format	not set for volt_level
@@ -614,9 +614,9 @@ void PowerSupply_PSW_3072Class::attribute_factory(vector<Tango::Attr *> &att_lis
 	//	Attribute : curr_level
 	curr_levelAttrib	*curr_level = new curr_levelAttrib();
 	Tango::UserDefaultAttrProp	curr_level_prop;
-	//	description	not set for curr_level
-	//	label	not set for curr_level
-	//	unit	not set for curr_level
+	curr_level_prop.set_description("The current level in amps");
+	curr_level_prop.set_label("CurrentLevel");
+	curr_level_prop.set_unit("A");
 	//	standard_unit	not set for curr_level
 	//	display_unit	not set for curr_level
 	//	format	not set for curr_level
