@@ -10,6 +10,7 @@ lib/*
 *-back
 *.bck
 *.user.*
+*.user
 *.tmp
 vc10_proj/*.user
 vc10_proj/*.sdf
