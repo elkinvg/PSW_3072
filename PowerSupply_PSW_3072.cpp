@@ -170,7 +170,7 @@ void PowerSupply_PSW_3072::init_device()
         DEBUG_STREAM << "Socket:    " << socket << endl;
         socketProxy = new Tango::DeviceProxy(socket);
     } catch (Tango::DevFailed &e) {
-        Tango::Except::print_exception(e);
+        fromException(e);
     }
 
     check_psstate();
@@ -391,7 +391,7 @@ void PowerSupply_PSW_3072::on()
         this->set_status("Output status is On");
     }
     catch (Tango::DevFailed &e) {
-        Tango::Except::print_exception(e);
+        fromException(e);
     }
 	
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::on
@@ -416,7 +416,7 @@ void PowerSupply_PSW_3072::off()
         this->set_status("Output status is OFF");
     }
     catch (Tango::DevFailed &e) {
-        Tango::Except::print_exception(e);
+        fromException(e);
     }
 
 	
@@ -515,11 +515,13 @@ void PowerSupply_PSW_3072::check_psstate()
             output = socketProxy->command_inout("WriteAndRead",input);
             output >> outState;
         } catch (Tango::DevFailed &e) {
-            Tango::Except::print_exception(e);
+            fromException(e);
             return;
         }
 
         unsigned short isActive;
+
+// outState = 1/0 is Output status of the instrument. 1 is ON, 0 is OFF
 
         try {
             isActive = stoi(outState);
@@ -559,9 +561,18 @@ void PowerSupply_PSW_3072::check_socket_state()
             isSocketOn = false;
         }
     } catch (Tango::DevFailed &e) {
-        Tango::Except::print_exception(e);
+        fromException(e);
         isSocketOn = false;
     }
+}
+
+void PowerSupply_PSW_3072::fromException(Tango::DevFailed &e)
+{
+    auto lnh = e.errors.length();
+    for (int i=0;i<lnh;i++) {
+        ERROR_STREAM << e.errors[i].desc << endl;
+    }
+//    Tango::Except::print_exception(e);
 }
 
 //void PowerSupply_PSW_3072::updateCurrVoltLevels()
@@ -619,10 +630,19 @@ std::pair<Tango::DevDouble, Tango::DevDouble> PowerSupply_PSW_3072::getValuesOfC
         if (command == GETCURRVOLTLEVEL)
             DEBUG_STREAM << "REPLY getValuesOfCurrAndVolt: " << reply << endl;
     }
-    catch (Tango::DevFailed &e) {
-        Tango::Except::print_exception(e);
+    catch (Tango::CommunicationFailed &e) {
+        output = socketProxy->command_inout("Init");
         return make_pair(-1, -1);
     }
+    catch (Tango::DevFailed &e) {
+        fromException(e);
+        return make_pair(-1, -1);
+    }
+
+//    catch (Tango::DevFailed &e) {
+//        Tango::Except::print_exception(e);
+//        return make_pair(-1, -1);
+//    }
     return getValuesFromResponse(reply);
 }
 
@@ -649,7 +669,7 @@ void PowerSupply_PSW_3072::reconnectSocket()
     try {
         socketProxy->command_inout("Reconnect");
     } catch (Tango::DevFailed &e) {
-        Tango::Except::print_exception(e);
+        fromException(e);
     }
 }
 

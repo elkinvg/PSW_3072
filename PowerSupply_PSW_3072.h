@@ -260,6 +260,7 @@ public:
 //	Additional Method prototypes
     void check_psstate();
     void check_socket_state();
+    void fromException(Tango::DevFailed &e);
     //void updateCurrVoltLevels();
 
     void forSettingOfLevels(Tango::DevDouble argin, string command);
