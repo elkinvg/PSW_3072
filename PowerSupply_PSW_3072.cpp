@@ -55,15 +55,16 @@ static const char *RcsId = "$Id:  $";
 //  The following table gives the correspondence
 //  between command and method names.
 //
-//  Command name     |  Method name
+//  Command name          |  Method name
 //================================================================
-//  State            |  Inherited (no method)
-//  Status           |  Inherited (no method)
-//  MeasureUpdate    |  measure_update
-//  On               |  on
-//  Off              |  off
-//  SetVoltageLevel  |  set_voltage_level
-//  SetCurrentLevel  |  set_current_level
+//  State                 |  Inherited (no method)
+//  Status                |  Inherited (no method)
+//  MeasureUpdate         |  measure_update
+//  On                    |  on
+//  Off                   |  off
+//  SetVoltageLevel       |  set_voltage_level
+//  SetCurrentLevel       |  set_current_level
+//  UpdateCurrVoltLevels  |  update_curr_volt_levels
 //================================================================
 
 //================================================================
@@ -162,6 +163,9 @@ void PowerSupply_PSW_3072::init_device()
 	attr_curr_level_read = new Tango::DevDouble[1];
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::init_device) ENABLED START -----*/
 	
+    attr_curr_level_read[0] = -1;
+    attr_volt_level_read[0] = -1;
+
     try {
         DEBUG_STREAM << "Socket:    " << socket << endl;
         socketProxy = new Tango::DeviceProxy(socket);
@@ -170,7 +174,7 @@ void PowerSupply_PSW_3072::init_device()
     }
 
     check_psstate();
-    updateCurrVoltLevels();
+    //updateCurrVoltLevels();
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::init_device
 }
 
@@ -237,7 +241,8 @@ void PowerSupply_PSW_3072::always_executed_hook()
 	DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
 	
-	//	code always executed before all requests
+    // ??? if check_socket_state() ?
+    check_psstate();
 	
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::always_executed_hook
 }
@@ -451,6 +456,32 @@ void PowerSupply_PSW_3072::set_current_level(Tango::DevDouble argin)
 }
 //--------------------------------------------------------
 /**
+ *	Command UpdateCurrVoltLevels related method
+ *	Description: Queries the current level in amps and the voltage level in volts.
+ *
+ */
+//--------------------------------------------------------
+void PowerSupply_PSW_3072::update_curr_volt_levels()
+{
+	DEBUG_STREAM << "PowerSupply_PSW_3072::UpdateCurrVoltLevels()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::update_curr_volt_levels) ENABLED START -----*/
+	
+    if (isSocketOn) {
+        auto currVolt = getValuesOfCurrAndVolt(GETCURRVOLTLEVEL);
+
+        attr_curr_level_read[0] = currVolt.first;
+        attr_volt_level_read[0] = currVolt.second;
+    }
+    else
+    {
+        attr_curr_level_read[0] = -1;
+        attr_volt_level_read[0] = -1;
+    }
+	
+	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::update_curr_volt_levels
+}
+//--------------------------------------------------------
+/**
  *	Method      : PowerSupply_PSW_3072::add_dynamic_commands()
  *	Description : Create the dynamic commands if any
  *                for specified device.
@@ -475,6 +506,10 @@ void PowerSupply_PSW_3072::check_psstate()
     check_socket_state();
 
     if(isSocketOn) {
+        if (attr_curr_level_read[0] == -1 || attr_volt_level_read[0] == -1) {
+            //updateCurrVoltLevels();
+            update_curr_volt_levels();
+        }
         try {
             input << OUTPUTMODESTATUS;
             output = socketProxy->command_inout("WriteAndRead",input);
@@ -504,6 +539,7 @@ void PowerSupply_PSW_3072::check_psstate()
     else {
         set_state(Tango::FAULT);
         set_status("Can't connect to socket");
+        reconnectSocket();
     }
 }
 
@@ -528,20 +564,20 @@ void PowerSupply_PSW_3072::check_socket_state()
     }
 }
 
-void PowerSupply_PSW_3072::updateCurrVoltLevels()
-{
-    if (isSocketOn) {
-        auto currVolt = getValuesOfCurrAndVolt(GETCURRVOLTLEVEL);
+//void PowerSupply_PSW_3072::updateCurrVoltLevels()
+//{
+//    if (isSocketOn) {
+//        auto currVolt = getValuesOfCurrAndVolt(GETCURRVOLTLEVEL);
 
-        attr_curr_level_read[0] = currVolt.first;
-        attr_volt_level_read[0] = currVolt.second;
-    }
-    else
-    {
-        attr_curr_level_read[0] = -1;
-        attr_volt_level_read[0] = -1;
-    }
-}
+//        attr_curr_level_read[0] = currVolt.first;
+//        attr_volt_level_read[0] = currVolt.second;
+//    }
+//    else
+//    {
+//        attr_curr_level_read[0] = -1;
+//        attr_volt_level_read[0] = -1;
+//    }
+//}
 
 std::pair<Tango::DevDouble, Tango::DevDouble> PowerSupply_PSW_3072::getValuesFromResponse(string reply)
 {
@@ -580,6 +616,8 @@ std::pair<Tango::DevDouble, Tango::DevDouble> PowerSupply_PSW_3072::getValuesOfC
         input << command;
         output = socketProxy->command_inout("WriteAndRead", input);
         output >> reply;
+        if (command == GETCURRVOLTLEVEL)
+            DEBUG_STREAM << "REPLY getValuesOfCurrAndVolt: " << reply << endl;
     }
     catch (Tango::DevFailed &e) {
         Tango::Except::print_exception(e);
@@ -602,6 +640,15 @@ void PowerSupply_PSW_3072::forSettingOfLevels(Tango::DevDouble argin, string com
         socketProxy->command_inout("Write", input);
     }
     catch (Tango::DevFailed &e) {
+        Tango::Except::print_exception(e);
+    }
+}
+
+void PowerSupply_PSW_3072::reconnectSocket()
+{
+    try {
+        socketProxy->command_inout("Reconnect");
+    } catch (Tango::DevFailed &e) {
         Tango::Except::print_exception(e);
     }
 }

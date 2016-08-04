@@ -231,6 +231,29 @@ public:
 	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetCurrentLevel_allowed(any);}
 };
 
+//	Command UpdateCurrVoltLevels class definition
+class UpdateCurrVoltLevelsClass : public Tango::Command
+{
+public:
+	UpdateCurrVoltLevelsClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
+
+	UpdateCurrVoltLevelsClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~UpdateCurrVoltLevelsClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_UpdateCurrVoltLevels_allowed(any);}
+};
+
 
 /**
  *	The PowerSupply_PSW_3072Class singleton definition

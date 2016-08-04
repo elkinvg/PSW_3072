@@ -238,6 +238,13 @@ public:
 	 */
 	virtual void set_current_level(Tango::DevDouble argin);
 	virtual bool is_SetCurrentLevel_allowed(const CORBA::Any &any);
+	/**
+	 *	Command UpdateCurrVoltLevels related method
+	 *	Description: Queries the current level in amps and the voltage level in volts.
+	 *
+	 */
+	virtual void update_curr_volt_levels();
+	virtual bool is_UpdateCurrVoltLevels_allowed(const CORBA::Any &any);
 
 
 	//--------------------------------------------------------
@@ -253,9 +260,11 @@ public:
 //	Additional Method prototypes
     void check_psstate();
     void check_socket_state();
-    void updateCurrVoltLevels();
+    //void updateCurrVoltLevels();
 
     void forSettingOfLevels(Tango::DevDouble argin, string command);
+
+    void reconnectSocket();
 
     std::pair<Tango::DevDouble, Tango::DevDouble> getValuesFromResponse(string);
     std::pair<Tango::DevDouble, Tango::DevDouble> getValuesOfCurrAndVolt(string);

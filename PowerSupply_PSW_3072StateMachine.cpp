@@ -66,7 +66,7 @@ bool PowerSupply_PSW_3072::is_volt_meas_allowed(TANGO_UNUSED(Tango::AttReqType t
 	//	Not any excluded states for volt_meas attribute in read access.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::volt_measStateAllowed_READ) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::volt_measStateAllowed_READ
@@ -85,7 +85,7 @@ bool PowerSupply_PSW_3072::is_curr_meas_allowed(TANGO_UNUSED(Tango::AttReqType t
 	//	Not any excluded states for curr_meas attribute in read access.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::curr_measStateAllowed_READ) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::curr_measStateAllowed_READ
@@ -104,7 +104,7 @@ bool PowerSupply_PSW_3072::is_volt_level_allowed(TANGO_UNUSED(Tango::AttReqType 
 	//	Not any excluded states for volt_level attribute in read access.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::volt_levelStateAllowed_READ) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::volt_levelStateAllowed_READ
@@ -123,7 +123,7 @@ bool PowerSupply_PSW_3072::is_curr_level_allowed(TANGO_UNUSED(Tango::AttReqType 
 	//	Not any excluded states for curr_level attribute in read access.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::curr_levelStateAllowed_READ) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::curr_levelStateAllowed_READ
@@ -146,7 +146,7 @@ bool PowerSupply_PSW_3072::is_MeasureUpdate_allowed(TANGO_UNUSED(const CORBA::An
 	//	Not any excluded states for MeasureUpdate command.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::MeasureUpdateStateAllowed) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::MeasureUpdateStateAllowed
@@ -164,7 +164,7 @@ bool PowerSupply_PSW_3072::is_On_allowed(TANGO_UNUSED(const CORBA::Any &any))
 	//	Not any excluded states for On command.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::OnStateAllowed) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
     if(this->get_state() == Tango::ON)
@@ -184,7 +184,7 @@ bool PowerSupply_PSW_3072::is_Off_allowed(TANGO_UNUSED(const CORBA::Any &any))
 	//	Not any excluded states for Off command.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::OffStateAllowed) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
     if(this->get_state() == Tango::OFF)
@@ -204,7 +204,7 @@ bool PowerSupply_PSW_3072::is_SetVoltageLevel_allowed(TANGO_UNUSED(const CORBA::
 	//	Not any excluded states for SetVoltageLevel command.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::SetVoltageLevelStateAllowed) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::SetVoltageLevelStateAllowed
@@ -222,10 +222,26 @@ bool PowerSupply_PSW_3072::is_SetCurrentLevel_allowed(TANGO_UNUSED(const CORBA::
 	//	Not any excluded states for SetCurrentLevel command.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::SetCurrentLevelStateAllowed) ENABLED START -----*/
     //check_socket_state();
-	check_psstate();
+	//check_psstate();
     if (!isSocketOn)
         return false;
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::SetCurrentLevelStateAllowed
+	return true;
+}
+
+//--------------------------------------------------------
+/**
+ *	Method      : PowerSupply_PSW_3072::is_UpdateCurrVoltLevels_allowed()
+ *	Description : Execution allowed for UpdateCurrVoltLevels attribute
+ */
+//--------------------------------------------------------
+bool PowerSupply_PSW_3072::is_UpdateCurrVoltLevels_allowed(TANGO_UNUSED(const CORBA::Any &any))
+{
+	//	Not any excluded states for UpdateCurrVoltLevels command.
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::UpdateCurrVoltLevelsStateAllowed) ENABLED START -----*/
+    if (!isSocketOn)
+        return false;
+	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::UpdateCurrVoltLevelsStateAllowed
 	return true;
 }
 
