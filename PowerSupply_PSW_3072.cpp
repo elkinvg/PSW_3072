@@ -165,6 +165,8 @@ void PowerSupply_PSW_3072::init_device()
 	
     attr_curr_level_read[0] = -1;
     attr_volt_level_read[0] = -1;
+    attr_curr_meas_read[0] = -1;
+    attr_volt_meas_read[0] = -1;
 
     try {
         DEBUG_STREAM << "Socket:    " << socket << endl;
@@ -352,6 +354,35 @@ void PowerSupply_PSW_3072::add_dynamic_attributes()
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::add_dynamic_attributes
 }
 
+//--------------------------------------------------------
+/**
+ *	Read pipe PipeAttrs related method
+ *	Description: volt_meas - the output voltage
+ *               curr_meas - the output current
+ *               volt_level - the voltage level in volts
+ *               curr_level - the current level in amps
+ */
+//--------------------------------------------------------
+void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
+{
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_PipeAttrs) ENABLED START -----*/
+	
+    pipe.set_root_blob_name("pswData");
+    vector<string> names{
+        "volt_measure",
+        "current_measure",
+        "volt_level",
+        "curr_level",
+        "State",
+        "Status"
+    };
+    pipe.set_data_elt_names(names);
+
+    pipe << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status();
+	
+	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_PipeAttrs
+}
 //--------------------------------------------------------
 /**
  *	Command MeasureUpdate related method
@@ -667,6 +698,7 @@ void PowerSupply_PSW_3072::forSettingOfLevels(Tango::DevDouble argin, string com
 void PowerSupply_PSW_3072::reconnectSocket()
 {
     try {
+        //socketProxy->command_inout_asynch("Reconnect");
         socketProxy->command_inout("Reconnect");
     } catch (Tango::DevFailed &e) {
         fromException(e);
