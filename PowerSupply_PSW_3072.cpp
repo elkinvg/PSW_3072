@@ -171,9 +171,17 @@ void PowerSupply_PSW_3072::init_device()
     try {
         DEBUG_STREAM << "Socket:    " << socket << endl;
         socketProxy = new Tango::DeviceProxy(socket);
+
+        // ??? setting timeout 
+        socketProxy->set_timeout_millis(1000);
     } catch (Tango::DevFailed &e) {
         fromException(e);
     }
+
+    int poll_perr = get_command_poll_period("MeasureUpdate");
+    
+    if (!poll_perr)
+        poll_command("MeasureUpdate", POLLPERIODDEFAULT);
 
     check_psstate();
     //updateCurrVoltLevels();
@@ -703,8 +711,9 @@ void PowerSupply_PSW_3072::forSettingOfLevels(Tango::DevDouble argin, string com
 void PowerSupply_PSW_3072::reconnectSocket()
 {
     try {
-        //socketProxy->command_inout_asynch("Reconnect");
-        socketProxy->command_inout("Reconnect");
+        socketProxy->command_inout_asynch("Reconnect");
+        // ???Testing inout_asynch for reconnect
+        //socketProxy->command_inout("Reconnect");
     } catch (Tango::DevFailed &e) {
         fromException(e);
     }

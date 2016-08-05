@@ -75,6 +75,8 @@ private:
     string SETVOLTLEVEL = "sour:volt:lev:imm:ampl ";
     string SETCURLEVEL = "sour:curr:lev:imm:ampl ";
     string GETCURRVOLTLEVEL = "sour:curr:lev:imm:ampl?;:sour:volt:lev:imm:ampl?";
+    const int POLLPERIODDEFAULT = 1000; // default poll period
+    const int POLLPERIODIFNOCONN = 10000; // poll period if no connection. Socket is FAULT or OFF
 
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Data Members
 
