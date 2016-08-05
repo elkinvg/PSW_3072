@@ -678,7 +678,7 @@ void PowerSupply_PSW_3072Class::pipe_factory()
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072Class::pipe_factory_before
 	Tango::UserDefaultPipeProp udpp;
 	PipeAttrsClass	*pPipeAttrs = new PipeAttrsClass("PipeAttrs",Tango::OPERATOR);
-	udpp.set_description("volt_meas - the output voltage\ncurr_meas - the output current\nvolt_level - the voltage level in volts\ncurr_level - the current level in amps");
+	udpp.set_description("name_of_device - The name of device\nvolt_meas - the output voltage\ncurr_meas - the output current\nvolt_level - the voltage level in volts\ncurr_level - the current level in amps\nState - State of device\nStatus - Status of device");
 	udpp.set_label("Attributes for PSW 30-72");
 	pPipeAttrs->set_default_properties(udpp);
 	pipe_list.push_back(pPipeAttrs);

@@ -141,11 +141,11 @@ bool PowerSupply_PSW_3072::is_curr_level_allowed(TANGO_UNUSED(Tango::AttReqType 
 //--------------------------------------------------------
 bool PowerSupply_PSW_3072::is_PipeAttrs_allowed(TANGO_UNUSED(Tango::PipeReqType type))
 {
-    //	Not any excluded states for PipeAttrs pipe in read access.
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::PipeAttrsStateAllowed_READ) ENABLED START -----*/
+	//	Not any excluded states for PipeAttrs pipe in read access.
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::PipeAttrsStateAllowed_READ) ENABLED START -----*/
 
     /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::PipeAttrsStateAllowed_READ
-    return true;
+	return true;
 }
 
 //=================================================

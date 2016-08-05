@@ -357,10 +357,13 @@ void PowerSupply_PSW_3072::add_dynamic_attributes()
 //--------------------------------------------------------
 /**
  *	Read pipe PipeAttrs related method
- *	Description: volt_meas - the output voltage
+ *	Description: name_of_device - The name of device
+ *               volt_meas - the output voltage
  *               curr_meas - the output current
  *               volt_level - the voltage level in volts
  *               curr_level - the current level in amps
+ *               State - State of device
+ *               Status - Status of device
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
@@ -370,6 +373,7 @@ void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
 	
     pipe.set_root_blob_name("pswData");
     vector<string> names{
+        "name_of_device",
         "volt_measure",
         "current_measure",
         "volt_level",
@@ -377,9 +381,10 @@ void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
         "State",
         "Status"
     };
+
     pipe.set_data_elt_names(names);
 
-    pipe << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status();
+    pipe << get_name() << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status();
 	
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_PipeAttrs
 }
