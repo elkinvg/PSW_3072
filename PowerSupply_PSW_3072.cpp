@@ -180,9 +180,15 @@ void PowerSupply_PSW_3072::init_device()
 
     int poll_perr = get_command_poll_period("MeasureUpdate");
     
-    if (!poll_perr)
+    if (!poll_perr) {
         poll_command("MeasureUpdate", POLLPERIODDEFAULT);
-
+        last_polling_period = POLLPERIODDEFAULT;
+    }
+    else
+        last_polling_period = poll_perr;
+    
+    isNoConnPoll = false;
+    
     check_psstate();
     //updateCurrVoltLevels();
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::init_device
@@ -550,6 +556,14 @@ void PowerSupply_PSW_3072::check_psstate()
     check_socket_state();
 
     if(isSocketOn) {
+        if (isNoConnPoll) {
+            int poll_perr = get_command_poll_period("MeasureUpdate");
+            if (poll_perr != last_polling_period) {
+                poll_command("MeasureUpdate", last_polling_period);
+            }
+            isNoConnPoll = false;
+        }
+
         if (attr_curr_level_read[0] == -1 || attr_volt_level_read[0] == -1) {
             //updateCurrVoltLevels();
             update_curr_volt_levels();
@@ -577,12 +591,28 @@ void PowerSupply_PSW_3072::check_psstate()
         if (isActive) {
             set_state(Tango::ON);
             set_status("Output status is On");
-        } else {
+        } else { 
             set_state(Tango::OFF);
             set_status("Output status is Off");
         }
     }
+
     else {
+        int poll_perr = get_command_poll_period("MeasureUpdate");
+        // ??? exception poll_perr != POLLPERIODIFNOCONN && \|/ if changed period in jive
+        if (/*poll_perr != POLLPERIODIFNOCONN &&*/ !isNoConnPoll) {
+            poll_command("MeasureUpdate", POLLPERIODIFNOCONN);
+            last_polling_period = poll_perr;
+            isNoConnPoll = true;
+        }
+        if (poll_perr != POLLPERIODIFNOCONN && last_polling_period != poll_perr) {
+            last_polling_period = poll_perr;
+            cout << "LAST_PERIOD!!!!! " << last_polling_period << endl;
+        }
+
+        //if (!isNoConnPoll) 
+        //    isNoConnPoll = true;
+        
         set_state(Tango::FAULT);
         set_status("Can't connect to socket");
         reconnectSocket();

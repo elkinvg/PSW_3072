@@ -78,6 +78,9 @@ private:
     const int POLLPERIODDEFAULT = 1000; // default poll period
     const int POLLPERIODIFNOCONN = 10000; // poll period if no connection. Socket is FAULT or OFF
 
+    bool isNoConnPoll; // = true if no connection. Socket is FAULT or OFF.
+    int last_polling_period;
+
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Data Members
 
 //	Device property data members
