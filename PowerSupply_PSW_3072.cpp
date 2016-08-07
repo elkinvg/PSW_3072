@@ -44,6 +44,8 @@ static const char *RcsId = "$Id:  $";
 #include <PowerSupply_PSW_3072.h>
 #include <PowerSupply_PSW_3072Class.h>
 
+//#include <chrono>
+
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072.cpp
 
 /**
@@ -393,13 +395,17 @@ void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
         "volt_level",
         "curr_level",
         "State",
-        "Status"
+        "Status",
+        "timestamp"
     };
 
-    pipe.set_data_elt_names(names);
+    pipe.set_data_elt_names(names); 
 
     try {
-        pipe << get_name() << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status();
+        // ??? getting of timestamp
+        Tango::DevULong tv = time(0);
+        
+        pipe << get_name() << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status() << tv;
     }
     catch (Tango::WrongData &e) {
         ERROR_STREAM << " wrong data in pipe pswData " << endl;
