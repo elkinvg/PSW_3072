@@ -254,11 +254,11 @@ void PowerSupply_PSW_3072::get_device_property()
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::always_executed_hook()
 {
-	DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
+	//DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
 	
     // ??? if check_socket_state() ?
-    check_psstate();
+    //check_psstate();
 	
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::always_executed_hook
 }
@@ -398,7 +398,13 @@ void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
 
     pipe.set_data_elt_names(names);
 
-    pipe << get_name() << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status();
+    try {
+        pipe << get_name() << attr_volt_meas_read[0] << attr_curr_meas_read[0] << attr_volt_level_read[0] << attr_curr_level_read[0] << get_state() << get_status();
+    }
+    catch (Tango::WrongData &e) {
+        ERROR_STREAM << " wrong data in pipe pswData " << endl;
+    }
+
 	
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_PipeAttrs
 }
@@ -413,7 +419,9 @@ void PowerSupply_PSW_3072::measure_update()
 {
 	DEBUG_STREAM << "PowerSupply_PSW_3072::MeasureUpdate()  - " << device_name << endl;
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::measure_update) ENABLED START -----*/
-
+    //// ??? test begin
+    //check_psstate();
+    //// ??? test end
     auto currVolt = getValuesOfCurrAndVolt(MEASCURRVOLT);
 
     attr_curr_meas_read[0] = currVolt.first;
@@ -741,7 +749,7 @@ void PowerSupply_PSW_3072::forSettingOfLevels(Tango::DevDouble argin, string com
 void PowerSupply_PSW_3072::reconnectSocket()
 {
     try {
-        socketProxy->command_inout_asynch("Reconnect");
+        socketProxy->command_inout_asynch("Reconnect",true);
         // ???Testing inout_asynch for reconnect
         //socketProxy->command_inout("Reconnect");
     } catch (Tango::DevFailed &e) {

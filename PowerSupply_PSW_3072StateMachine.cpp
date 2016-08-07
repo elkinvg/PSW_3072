@@ -163,9 +163,12 @@ bool PowerSupply_PSW_3072::is_MeasureUpdate_allowed(TANGO_UNUSED(const CORBA::An
 	//	Not any excluded states for MeasureUpdate command.
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::MeasureUpdateStateAllowed) ENABLED START -----*/
     //check_socket_state();
-	//check_psstate();
-    if (!isSocketOn)
+    // ??? test begin
+    check_psstate(); 
+    // ??? test end
+    if (!isSocketOn) {
         return false;
+    }
 	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::MeasureUpdateStateAllowed
 	return true;
 }
