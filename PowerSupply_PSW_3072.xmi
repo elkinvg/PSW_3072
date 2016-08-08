@@ -113,7 +113,7 @@
       <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>
       <properties description="The current level in amps" label="CurrentLevel" unit="A" standardUnit="" displayUnit="" format="" maxValue="" minValue="" maxAlarm="" minAlarm="" maxWarning="" minWarning="" deltaTime="" deltaValue=""/>
     </attributes>
-    <pipes name="PipeAttrs" description="name_of_device - The name of device&#xA;volt_meas - the output voltage&#xA;curr_meas - the output current&#xA;volt_level - the voltage level in volts&#xA;curr_level - the current level in amps&#xA;State - State of device&#xA;Status - Status of device" label="Attributes for PSW 30-72" rwType="READ" displayLevel="OPERATOR"/>
+    <pipes name="PipeAttrs" description="name_of_device - The name of device&#xA;volt_meas - the output voltage&#xA;curr_meas - the output current&#xA;volt_level - the voltage level in volts&#xA;curr_level - the current level in amps&#xA;State - State of device&#xA;Status - Status of device&#xA;timestamp - UNIX timestamp" label="Attributes for PSW 30-72" rwType="READ" displayLevel="OPERATOR"/>
     <states name="ON" description="">
       <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>
     </states>
