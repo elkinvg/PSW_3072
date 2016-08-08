@@ -37,6 +37,9 @@ static const char *RcsId = "$Id:  $";
 //=============================================================================
 
 #include <PowerSupply_PSW_3072.h>
+#ifdef _WIN32
+#include <ctime>
+#endif
 
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::PowerSupply_PSW_3072StateMachine.cpp
 
