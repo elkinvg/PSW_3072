@@ -164,6 +164,10 @@ bool PowerSupply_PSW_3072::is_MeasureUpdate_allowed(TANGO_UNUSED(const CORBA::An
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::MeasureUpdateStateAllowed) ENABLED START -----*/
     //check_socket_state();
     // ??? test begin
+    // added getting of TIMESTAMP
+    unix_timestamp = std::chrono::seconds(std::time(NULL));
+    tv = unix_timestamp.count();
+
     check_psstate(); 
     // ??? test end
     if (!isSocketOn) {

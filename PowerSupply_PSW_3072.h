@@ -41,6 +41,7 @@
 
 #include <tango.h>
 
+#include <chrono>
 
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072.h
 
@@ -80,6 +81,8 @@ private:
 
     bool isNoConnPoll; // = true if no connection. Socket is FAULT or OFF.
     int last_polling_period;
+    Tango::DevULong tv; // TIMESTAMP
+    std::chrono::seconds unix_timestamp; // TIMESTAMP from std::chrono
 
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Data Members
 
