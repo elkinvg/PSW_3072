@@ -84,6 +84,8 @@ private:
     Tango::DevULong tv; // TIMESTAMP
     std::chrono::seconds unix_timestamp; // TIMESTAMP from std::chrono
 
+    bool ifInit; // if From init method.
+
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Data Members
 
 //	Device property data members
@@ -275,6 +277,7 @@ public:
     void check_socket_state();
     void fromException(Tango::DevFailed &e);
     //void updateCurrVoltLevels();
+    void changePollPeriod(int period); // input: Poll period
 
     void forSettingOfLevels(Tango::DevDouble argin, string command);
 

@@ -170,6 +170,8 @@ void PowerSupply_PSW_3072::init_device()
     attr_curr_meas_read[0] = -1;
     attr_volt_meas_read[0] = -1;
 
+    ifInit = true;
+
     try {
         DEBUG_STREAM << "Socket:    " << socket << endl;
         socketProxy = new Tango::DeviceProxy(socket);
@@ -180,15 +182,6 @@ void PowerSupply_PSW_3072::init_device()
         fromException(e);
     }
 
-    int poll_perr = get_command_poll_period("MeasureUpdate");
-    
-    if (!poll_perr) {
-        poll_command("MeasureUpdate", POLLPERIODDEFAULT);
-        last_polling_period = POLLPERIODDEFAULT;
-    }
-    else
-        last_polling_period = poll_perr;
-    
     isNoConnPoll = false;
     
     check_psstate();
@@ -568,12 +561,14 @@ void PowerSupply_PSW_3072::check_psstate()
     check_socket_state();
 
     if(isSocketOn) {
-        if (isNoConnPoll) {
-            int poll_perr = get_command_poll_period("MeasureUpdate");
-            if (poll_perr != last_polling_period) {
-                poll_command("MeasureUpdate", last_polling_period);
-            }
-            isNoConnPoll = false;
+        if (isNoConnPoll || ifInit) {
+
+            changePollPeriod(POLLPERIODDEFAULT);
+
+            if (isNoConnPoll)
+                isNoConnPoll = false;
+            if (ifInit)
+                ifInit = false;
         }
 
         if (attr_curr_level_read[0] == -1 || attr_volt_level_read[0] == -1) {
@@ -610,20 +605,14 @@ void PowerSupply_PSW_3072::check_psstate()
     }
 
     else {
-        int poll_perr = get_command_poll_period("MeasureUpdate");
-        // ??? exception poll_perr != POLLPERIODIFNOCONN && \|/ if changed period in jive
-        if (/*poll_perr != POLLPERIODIFNOCONN &&*/ !isNoConnPoll) {
-            poll_command("MeasureUpdate", POLLPERIODIFNOCONN);
-            last_polling_period = poll_perr;
-            isNoConnPoll = true;
-        }
-        if (poll_perr != POLLPERIODIFNOCONN && last_polling_period != poll_perr) {
-            last_polling_period = poll_perr;
-            cout << "LAST_PERIOD!!!!! " << last_polling_period << endl;
-        }
+        if (!isNoConnPoll || ifInit) {
+            changePollPeriod(POLLPERIODIFNOCONN);
 
-        //if (!isNoConnPoll) 
-        //    isNoConnPoll = true;
+            if (!isNoConnPoll)
+                isNoConnPoll = true;
+            if (ifInit)
+                ifInit = false;
+        }
         
         set_state(Tango::FAULT);
         set_status("Can't connect to socket");
@@ -658,7 +647,19 @@ void PowerSupply_PSW_3072::fromException(Tango::DevFailed &e)
     for (int i=0;i<lnh;i++) {
         ERROR_STREAM << e.errors[i].desc << endl;
     }
-//    Tango::Except::print_exception(e);
+    //    Tango::Except::print_exception(e);
+}
+
+void PowerSupply_PSW_3072::changePollPeriod(int period)
+{
+    int poll_perr = get_command_poll_period("MeasureUpdate");
+
+    if (poll_perr != POLLPERIODDEFAULT && poll_perr != POLLPERIODIFNOCONN)
+        last_polling_period = poll_perr;
+
+    if (period != poll_perr) {
+        poll_command("MeasureUpdate", period);
+    }
 }
 
 //void PowerSupply_PSW_3072::updateCurrVoltLevels()
