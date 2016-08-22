@@ -571,10 +571,11 @@ void PowerSupply_PSW_3072::check_psstate()
                 ifInit = false;
         }
 
-        if (attr_curr_level_read[0] == -1 || attr_volt_level_read[0] == -1) {
-            //updateCurrVoltLevels();
-            update_curr_volt_levels();
-        }
+        update_curr_volt_levels();
+//        if (attr_curr_level_read[0] == -1 || attr_volt_level_read[0] == -1) {
+//            //updateCurrVoltLevels();
+//            update_curr_volt_levels();
+//        }
         try {
             input << OUTPUTMODESTATUS;
             output = socketProxy->command_inout("WriteAndRead",input);
