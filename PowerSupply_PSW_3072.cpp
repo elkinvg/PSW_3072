@@ -531,6 +531,9 @@ void PowerSupply_PSW_3072::update_curr_volt_levels()
     {
         attr_curr_level_read[0] = -1;
         attr_volt_level_read[0] = -1;
+
+        attr_curr_meas_read[0] = -1;
+        attr_volt_meas_read[0] = -1;
     }
 
     /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::update_curr_volt_levels
@@ -560,6 +563,8 @@ void PowerSupply_PSW_3072::check_psstate()
 
     check_socket_state();
 
+    update_curr_volt_levels();
+
     if(isSocketOn) {
         if (isNoConnPoll || ifInit) {
 
@@ -571,7 +576,7 @@ void PowerSupply_PSW_3072::check_psstate()
                 ifInit = false;
         }
 
-        update_curr_volt_levels();
+//        update_curr_volt_levels();
 //        if (attr_curr_level_read[0] == -1 || attr_volt_level_read[0] == -1) {
 //            //updateCurrVoltLevels();
 //            update_curr_volt_levels();
@@ -617,7 +622,7 @@ void PowerSupply_PSW_3072::check_psstate()
         
         set_state(Tango::FAULT);
         set_status("Can't connect to socket");
-        reconnectSocket();
+        //reconnectSocket();
     }
 }
 
