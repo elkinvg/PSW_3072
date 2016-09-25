@@ -633,7 +633,7 @@ void PowerSupply_PSW_3072::check_socket_state()
 
     try {
         // tst B
-        cout << "tst ... " << get_name() << " check_socket_state()";
+        cout << unix_timestamp.count() << " tst ... " << get_name() << " check_socket_state()";
         // tst E
         outputCom = socketProxy->command_inout("State");
         outputCom >> stateSocket;
