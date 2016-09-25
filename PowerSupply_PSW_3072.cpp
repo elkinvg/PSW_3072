@@ -632,6 +632,9 @@ void PowerSupply_PSW_3072::check_socket_state()
     Tango::DevState stateSocket;
 
     try {
+        // tst B
+        cout << "tst ... " << get_name() << " check_socket_state()";
+        // tst E
         outputCom = socketProxy->command_inout("State");
         outputCom >> stateSocket;
         if (stateSocket == Tango::ON) {
@@ -641,9 +644,15 @@ void PowerSupply_PSW_3072::check_socket_state()
         {
             isSocketOn = false;
         }
+        // tst B
+        cout << " state is " << boolalpha << isSocketOn << "... tst " << endl;
+        // tst E
     } catch (Tango::DevFailed &e) {
         fromException(e);
         isSocketOn = false;
+        // tst B
+        cout << " FROM CATCH state is " << boolalpha << isSocketOn << "... tst " << endl;
+        // tst E
     }
 }
 
