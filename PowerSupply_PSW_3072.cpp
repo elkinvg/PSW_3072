@@ -266,6 +266,9 @@ void PowerSupply_PSW_3072::always_executed_hook()
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
 {
+    // tst B
+    cout << unix_timestamp.count() << " tst ... " << get_name() << " read_attr_hardware()" << endl;
+    // tst E
     DEBUG_STREAM << "PowerSupply_PSW_3072::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
     /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_attr_hardware) ENABLED START -----*/
 
