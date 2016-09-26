@@ -76,8 +76,8 @@ private:
     string SETVOLTLEVEL = "sour:volt:lev:imm:ampl ";
     string SETCURLEVEL = "sour:curr:lev:imm:ampl ";
     string GETCURRVOLTLEVEL = "sour:curr:lev:imm:ampl?;:sour:volt:lev:imm:ampl?";
-    const int POLLPERIODDEFAULT = 1000; // default poll period
-    const int POLLPERIODIFNOCONN = 10000; // poll period if no connection. Socket is FAULT or OFF
+    const int POLLPERIODDEFAULT = 2000;// 1000; // default poll period
+    const int POLLPERIODIFNOCONN = 2000;// 10000; // poll period if no connection. Socket is FAULT or OFF
 
     bool isNoConnPoll; // = true if no connection. Socket is FAULT or OFF.
     int last_polling_period;
