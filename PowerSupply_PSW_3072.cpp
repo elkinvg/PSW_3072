@@ -251,7 +251,7 @@ void PowerSupply_PSW_3072::always_executed_hook()
 {
 //    DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
     /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
-    cout << unix_timestamp.count() << " tst ... " << get_name() << " always" << endl;
+
     // ??? if check_socket_state() ?
     //check_psstate();
 
