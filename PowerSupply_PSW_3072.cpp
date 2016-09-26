@@ -183,7 +183,9 @@ void PowerSupply_PSW_3072::init_device()
     }
 
     isNoConnPoll = false;
-    
+    //tst bgn
+    changePollPeriod(3000);
+    //tst end
     check_psstate();
     //updateCurrVoltLevels();
     /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::init_device
