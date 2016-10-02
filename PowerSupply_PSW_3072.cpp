@@ -184,6 +184,8 @@ void PowerSupply_PSW_3072::init_device()
 
     isNoConnPoll = false;
     
+    changePollPeriod(POLLPERIODDEFAULT);
+    
     check_psstate();
     //updateCurrVoltLevels();
     /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::init_device
@@ -568,7 +570,7 @@ void PowerSupply_PSW_3072::check_psstate()
     if(isSocketOn) {
         if (isNoConnPoll || ifInit) {
 
-            changePollPeriod(POLLPERIODDEFAULT);
+            //changePollPeriod(POLLPERIODDEFAULT);
 
             if (isNoConnPoll)
                 isNoConnPoll = false;
@@ -612,7 +614,7 @@ void PowerSupply_PSW_3072::check_psstate()
 
     else {
         if (!isNoConnPoll || ifInit) {
-            changePollPeriod(POLLPERIODIFNOCONN);
+            //changePollPeriod(POLLPERIODIFNOCONN);
 
             if (!isNoConnPoll)
                 isNoConnPoll = true;
