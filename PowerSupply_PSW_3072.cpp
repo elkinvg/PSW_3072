@@ -28,7 +28,7 @@ static const char *RcsId = "$Id:  $";
 // along with Tango.  If not, see <http://www.gnu.org/licenses/>.
 // 
 // $Author:  $
-// Elkin V. © JINR
+// Elkin V. ï¿½ JINR
 //
 // $Revision:  $
 // $Date:  $
@@ -67,6 +67,7 @@ static const char *RcsId = "$Id:  $";
 //  SetVoltageLevel       |  set_voltage_level
 //  SetCurrentLevel       |  set_current_level
 //  UpdateCurrVoltLevels  |  update_curr_volt_levels
+//  SetCurrVoltLevels     |  set_curr_volt_levels
 //================================================================
 
 //================================================================
@@ -251,7 +252,7 @@ void PowerSupply_PSW_3072::get_device_property()
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::always_executed_hook()
 {
-//    DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
+    //DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
     /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
 
     // ??? if check_socket_state() ?
@@ -542,6 +543,41 @@ void PowerSupply_PSW_3072::update_curr_volt_levels()
 }
 //--------------------------------------------------------
 /**
+ *    Command SetCurrVoltLevels related method
+ *    Description: Sets the current and volt levels in amps.
+ *
+ *    @param argin arg[0] cuurent level
+ *               arg[1] volt level
+ */
+//--------------------------------------------------------
+void PowerSupply_PSW_3072::set_curr_volt_levels(const Tango::DevVarDoubleArray *argin)
+{
+    DEBUG_STREAM << "PowerSupply_PSW_3072::SetCurrVoltLevels()  - " << device_name << endl;
+    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_curr_volt_levels) ENABLED START -----*/
+
+    if (argin->length() < 2) {
+        ERROR_STREAM << " Must be two arguments " << endl;
+        return;
+    }
+    Tango::DeviceData input;
+    stringstream ss;
+    ss << "sour:curr:lev:imm:ampl " << (*argin)[0]
+          << ";:sour:volt:lev:imm:ampl " << (*argin)[1];
+    Tango::DevString commIn = Tango::string_dup(ss.str().c_str());
+
+    try {
+        input << commIn;
+        socketProxy->command_inout("Write", input);
+    }
+    catch (Tango::DevFailed &e) {
+        Tango::Except::print_exception(e);
+    }
+
+
+    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::set_curr_volt_levels
+}
+//--------------------------------------------------------
+/**
  *    Method      : PowerSupply_PSW_3072::add_dynamic_commands()
  *    Description : Create the dynamic commands if any
  *                for specified device.
@@ -751,6 +787,7 @@ void PowerSupply_PSW_3072::forSettingOfLevels(Tango::DevDouble argin, string com
     Tango::DevString commIn = Tango::string_dup(ss.str().c_str());
 
     try {
+        //input << ss.str().c_str();
         input << commIn;
         socketProxy->command_inout("Write", input);
     }

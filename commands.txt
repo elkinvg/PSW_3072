@@ -1,0 +1,11 @@
+    string MEASCURR = "meas:curr?";
+    string MEASVOLT = "meas:volt?";
+    string MEASCURRVOLT = "meas:curr?;:meas:volt?";
+    string OUTPUTMODEON = "outp:stat:imm ON";
+    string OUTPUTMODEOFF = "outp:stat:imm OFF";
+    string OUTPUTMODESTATUS = "outp:stat:imm?";
+    string SETVOLTLEVEL = "sour:volt:lev:imm:ampl ";
+    string SETCURLEVEL = "sour:curr:lev:imm:ampl ";
+    string GETCURRVOLTLEVEL = "sour:curr:lev:imm:ampl?;:sour:volt:lev:imm:ampl?";
+    
+    SETCURANDVOLTLEVEL sour:curr:lev:imm:ampl 0.2;:sour:volt:lev:imm:ampl 4.5

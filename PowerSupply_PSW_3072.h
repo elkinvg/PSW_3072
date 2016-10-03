@@ -23,7 +23,7 @@
 // along with Tango.  If not, see <http://www.gnu.org/licenses/>.
 // 
 // $Author:  $
-// Elkin V. © JINR
+// Elkin V. ï¿½ JINR
 //
 // $Revision:  $
 // $Date:  $
@@ -260,6 +260,15 @@ public:
      */
     virtual void update_curr_volt_levels();
     virtual bool is_UpdateCurrVoltLevels_allowed(const CORBA::Any &any);
+    /**
+     *    Command SetCurrVoltLevels related method
+     *    Description: Sets the current and volt levels in amps.
+     *
+     *    @param argin arg[0] cuurent level
+     *               arg[1] volt level
+     */
+    virtual void set_curr_volt_levels(const Tango::DevVarDoubleArray *argin);
+    virtual bool is_SetCurrVoltLevels_allowed(const CORBA::Any &any);
 
 
     //--------------------------------------------------------

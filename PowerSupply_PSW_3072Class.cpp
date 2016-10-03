@@ -271,6 +271,26 @@ CORBA::Any *UpdateCurrVoltLevelsClass::execute(Tango::DeviceImpl *device, TANGO_
 	return new CORBA::Any();
 }
 
+//--------------------------------------------------------
+/**
+ * method : 		SetCurrVoltLevelsClass::execute()
+ * description : 	method to trigger the execution of the command.
+ *
+ * @param	device	The device on which the command must be executed
+ * @param	in_any	The command input data
+ *
+ *	returns The command output data (packed in the Any object)
+ */
+//--------------------------------------------------------
+CORBA::Any *SetCurrVoltLevelsClass::execute(Tango::DeviceImpl *device, const CORBA::Any &in_any)
+{
+	cout2 << "SetCurrVoltLevelsClass::execute(): arrived" << endl;
+	const Tango::DevVarDoubleArray *argin;
+	extract(in_any, argin);
+	((static_cast<PowerSupply_PSW_3072 *>(device))->set_curr_volt_levels(argin));
+	return new CORBA::Any();
+}
+
 
 //===================================================================
 //	Properties management
@@ -758,6 +778,15 @@ void PowerSupply_PSW_3072Class::command_factory()
 			"",
 			Tango::OPERATOR);
 	command_list.push_back(pUpdateCurrVoltLevelsCmd);
+
+	//	Command SetCurrVoltLevels
+	SetCurrVoltLevelsClass	*pSetCurrVoltLevelsCmd =
+		new SetCurrVoltLevelsClass("SetCurrVoltLevels",
+			Tango::DEVVAR_DOUBLEARRAY, Tango::DEV_VOID,
+			"arg[0] cuurent level\narg[1] volt level",
+			"",
+			Tango::OPERATOR);
+	command_list.push_back(pSetCurrVoltLevelsCmd);
 
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072Class::command_factory_after) ENABLED START -----*/
 	

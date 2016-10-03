@@ -68,6 +68,7 @@
 				<li> <a href="FullDocument.html#cmdSetVoltageLevel"> SetVoltageLevel </a>
 				<li> <a href="FullDocument.html#cmdSetCurrentLevel"> SetCurrentLevel </a>
 				<li> <a href="FullDocument.html#cmdUpdateCurrVoltLevels"> UpdateCurrVoltLevels </a>
+				<li> <a href="FullDocument.html#cmdSetCurrVoltLevels"> SetCurrVoltLevels </a>
 			</ul>
 			<li> <a href="FullDocument.html#attributes">   Attributes   </a>
 			<ul>
@@ -227,6 +228,13 @@
 		<td> DEV_VOID </td>
 		<td> OPERATOR </td>
 		<td> Queries the current level in amps and the voltage level in volts. </td>
+	</tr>
+	<tr>
+		<td> <a href="CmdSetCurrVoltLevels.html"> SetCurrVoltLevels </a> </td>
+		<td> DEVVAR_DOUBLEARRAY </td>
+		<td> DEV_VOID </td>
+		<td> OPERATOR </td>
+		<td> Sets the current and volt levels in amps. </td>
 	</tr>
 </table>
 <br><br><hr>
@@ -588,6 +596,56 @@
 		<td> Input Argument </td>
 		<td> Tango::DEV_VOID </td>
 		<td>  </td>
+	</tr>
+	<tr>
+		<td> Output Argument </td>
+		<td> Tango::DEV_VOID </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td> DisplayLevel </td>
+		<td> OPERATOR </td>
+		<td> .. </td>
+	</tr>
+	<tr>
+		<td> Inherited </td>
+		<td> false </td>
+		<td> .. </td>
+	</tr>
+	<tr>
+		<td> Abstract </td>
+		<td> false </td>
+		<td> .. </td>
+	</tr>
+	<tr>
+		<td> Polling Period </td>
+		<td> Not polled </td>
+		<td> .. </td>
+	</tr>
+<Tr BGCOLOR="#CCCCFF"><Td><Hr></Td><Td><Hr></Td><Td><Hr></Td></Tr>
+	<tr>
+		<td> Command allowed for </td>
+		<td> All states </td>
+		<td> .. </td>
+	</tr>
+</table>
+<br><br><hr>
+<a name="cmdSetCurrVoltLevels"> </a>
+<br><br><br>
+<font size="+1"><u><b> Command SetCurrVoltLevels : </b></u></font>
+<ul>
+	Sets the current and volt levels in amps.
+</ul>
+<br><br><br>
+<Table Border=2 Cellpadding=3 CELLSPACING=0>
+	<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+	<td colspan=0> <font size=+1> <center><b> SetCurrVoltLevels Definition </b></font></center></td>
+	</tr>
+	<tr>
+		<td> Input Argument </td>
+		<td> Tango::DEVVAR_DOUBLEARRAY </td>
+		<td> arg[0] cuurent level<Br>
+arg[1] volt level </td>
 	</tr>
 	<tr>
 		<td> Output Argument </td>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pogoDsl:PogoSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pogoDsl="http://www.esrf.fr/tango/pogo/PogoDsl">
   <classes name="PowerSupply_PSW_3072" pogoRevision="9.1">
-    <description description="Tango Server for PowerSupply PSW_30-72 Instek." title="PowerSupply PSW_30-72 Gw Instek" sourcePath="/home/elkin/tempwork/tangoservs/PSW_3072" language="Cpp" filestogenerate="XMI   file,Protected Regions,html Pages" license="GPL" copyright="Elkin V. &#xa9; JINR" hasMandatoryProperty="false" hasConcreteProperty="true" hasAbstractCommand="false" hasAbstractAttribute="false" descriptionHtmlExists="false">
+    <description description="Tango Server for PowerSupply PSW_30-72 Instek." title="PowerSupply PSW_30-72 Gw Instek" sourcePath="/home/elkin/tempwork/tangoservs/PSW_3072" language="Cpp" filestogenerate="XMI   file,Code files,Protected Regions,html Pages" license="GPL" copyright="Elkin V. &#xa9; JINR" hasMandatoryProperty="false" hasConcreteProperty="true" hasAbstractCommand="false" hasAbstractAttribute="false" descriptionHtmlExists="false">
       <inheritances classname="Device_Impl" sourcePath=""/>
       <identification contact="at jinr.ru - elkin" author="elkin" emailDomain="jinr.ru" classFamily="PowerSupply" siteSpecific="" platform="All Platforms" bus="Socket" manufacturer="none" reference=""/>
     </description>
@@ -75,6 +75,15 @@
     <commands name="UpdateCurrVoltLevels" description="Queries the current level in amps and the voltage level in volts." execMethod="update_curr_volt_levels" displayLevel="OPERATOR" polledPeriod="0" isDynamic="false">
       <argin description="">
         <type xsi:type="pogoDsl:VoidType"/>
+      </argin>
+      <argout description="">
+        <type xsi:type="pogoDsl:VoidType"/>
+      </argout>
+      <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>
+    </commands>
+    <commands name="SetCurrVoltLevels" description="Sets the current and volt levels in amps." execMethod="set_curr_volt_levels" displayLevel="OPERATOR" polledPeriod="0" isDynamic="false">
+      <argin description="arg[0] cuurent level&#xA;arg[1] volt level">
+        <type xsi:type="pogoDsl:DoubleArrayType"/>
       </argin>
       <argout description="">
         <type xsi:type="pogoDsl:VoidType"/>

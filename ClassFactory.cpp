@@ -51,7 +51,7 @@ static const char *RcsId = "$Id:  $";
 
 void Tango::DServer::class_factory()
 {
-	//	Add method class init if needed
-	add_class(PowerSupply_PSW_3072_ns::PowerSupply_PSW_3072Class::init("PowerSupply_PSW_3072"));
+    //	Add method class init if needed
+    add_class(PowerSupply_PSW_3072_ns::PowerSupply_PSW_3072Class::init("PowerSupply_PSW_3072"));
 }
 /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::ClassFactory.cpp
