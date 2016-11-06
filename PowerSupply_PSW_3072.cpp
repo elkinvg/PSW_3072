@@ -160,6 +160,14 @@ void PowerSupply_PSW_3072::init_device()
 	//	Get the device properties from database
 	get_device_property();
 	
+    Tango::Database *db = Tango::Util::instance()->get_database();
+    string ths = "tangohosts"; // property
+    Tango::DbData db_data;
+    db_data.push_back(Tango::DbDatum("tango-ubs1")); //property_name
+    db->get_property(ths, db_data);
+    string rem_tango_host;
+    db_data[0] >> rem_tango_host;
+
 	attr_volt_meas_read = new Tango::DevDouble[1];
 	attr_curr_meas_read = new Tango::DevDouble[1];
 	attr_volt_level_read = new Tango::DevDouble[1];
@@ -174,6 +182,8 @@ void PowerSupply_PSW_3072::init_device()
     ifInit = true;
 
     try {
+        if (rem_tango_host.size()>0)
+            socket = rem_tango_host + socket;
         DEBUG_STREAM << "Socket:    " << socket << endl;
         socketProxy = new Tango::DeviceProxy(socket);
 
