@@ -43,7 +43,7 @@
 
 #include <chrono>
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072.h
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072.h
 
 /**
  *  PowerSupply_PSW_3072 class description:
@@ -56,7 +56,7 @@ namespace PowerSupply_PSW_3072_ns
 
 //    Additional Class Declarations
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::Additional Class Declarations
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Additional Class Declarations
 
 class PowerSupply_PSW_3072 : public TANGO_BASE_CLASS
 {
@@ -86,198 +86,198 @@ private:
 
     bool ifInit; // if From init method.
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::Data Members
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Data Members
 
-//    Device property data members
+//	Device property data members
 public:
-    //    Socket:    Socket Tango device name in format ``domain/family/member``
-    string    socket;
+	//	Socket:	Socket Tango device name in format ``domain/family/member``
+	string	socket;
 
-//    Attribute data members
+//	Attribute data members
 public:
-    Tango::DevDouble    *attr_volt_meas_read;
-    Tango::DevDouble    *attr_curr_meas_read;
-    Tango::DevDouble    *attr_volt_level_read;
-    Tango::DevDouble    *attr_curr_level_read;
+	Tango::DevDouble	*attr_volt_meas_read;
+	Tango::DevDouble	*attr_curr_meas_read;
+	Tango::DevDouble	*attr_volt_level_read;
+	Tango::DevDouble	*attr_curr_level_read;
 
-//    Constructors and destructors
+//	Constructors and destructors
 public:
-    /**
-     * Constructs a newly device object.
-     *
-     *    @param cl    Class.
-     *    @param s     Device Name
-     */
-    PowerSupply_PSW_3072(Tango::DeviceClass *cl,string &s);
-    /**
-     * Constructs a newly device object.
-     *
-     *    @param cl    Class.
-     *    @param s     Device Name
-     */
-    PowerSupply_PSW_3072(Tango::DeviceClass *cl,const char *s);
-    /**
-     * Constructs a newly device object.
-     *
-     *    @param cl    Class.
-     *    @param s     Device name
-     *    @param d    Device description.
-     */
-    PowerSupply_PSW_3072(Tango::DeviceClass *cl,const char *s,const char *d);
-    /**
-     * The device object destructor.
-     */
-    ~PowerSupply_PSW_3072() {delete_device();};
+	/**
+	 * Constructs a newly device object.
+	 *
+	 *	@param cl	Class.
+	 *	@param s 	Device Name
+	 */
+	PowerSupply_PSW_3072(Tango::DeviceClass *cl,string &s);
+	/**
+	 * Constructs a newly device object.
+	 *
+	 *	@param cl	Class.
+	 *	@param s 	Device Name
+	 */
+	PowerSupply_PSW_3072(Tango::DeviceClass *cl,const char *s);
+	/**
+	 * Constructs a newly device object.
+	 *
+	 *	@param cl	Class.
+	 *	@param s 	Device name
+	 *	@param d	Device description.
+	 */
+	PowerSupply_PSW_3072(Tango::DeviceClass *cl,const char *s,const char *d);
+	/**
+	 * The device object destructor.
+	 */
+	~PowerSupply_PSW_3072() {delete_device();};
 
 
-//    Miscellaneous methods
+//	Miscellaneous methods
 public:
-    /*
-     *    will be called at device destruction or at init command.
-     */
-    void delete_device();
-    /*
-     *    Initialize the device
-     */
-    virtual void init_device();
-    /*
-     *    Read the device properties from database
-     */
-    void get_device_property();
-    /*
-     *    Always executed method before execution command method.
-     */
-    virtual void always_executed_hook();
+	/*
+	 *	will be called at device destruction or at init command.
+	 */
+	void delete_device();
+	/*
+	 *	Initialize the device
+	 */
+	virtual void init_device();
+	/*
+	 *	Read the device properties from database
+	 */
+	void get_device_property();
+	/*
+	 *	Always executed method before execution command method.
+	 */
+	virtual void always_executed_hook();
 
 
-//    Attribute methods
+//	Attribute methods
 public:
-    //--------------------------------------------------------
-    /*
-     *    Method      : PowerSupply_PSW_3072::read_attr_hardware()
-     *    Description : Hardware acquisition for attributes.
-     */
-    //--------------------------------------------------------
-    virtual void read_attr_hardware(vector<long> &attr_list);
+	//--------------------------------------------------------
+	/*
+	 *	Method      : PowerSupply_PSW_3072::read_attr_hardware()
+	 *	Description : Hardware acquisition for attributes.
+	 */
+	//--------------------------------------------------------
+	virtual void read_attr_hardware(vector<long> &attr_list);
 
 /**
- *    Attribute volt_meas related methods
- *    Description: the output voltage
+ *	Attribute volt_meas related methods
+ *	Description: the output voltage
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
-    virtual void read_volt_meas(Tango::Attribute &attr);
-    virtual bool is_volt_meas_allowed(Tango::AttReqType type);
+	virtual void read_volt_meas(Tango::Attribute &attr);
+	virtual bool is_volt_meas_allowed(Tango::AttReqType type);
 /**
- *    Attribute curr_meas related methods
- *    Description: the output current
+ *	Attribute curr_meas related methods
+ *	Description: the output current
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
-    virtual void read_curr_meas(Tango::Attribute &attr);
-    virtual bool is_curr_meas_allowed(Tango::AttReqType type);
+	virtual void read_curr_meas(Tango::Attribute &attr);
+	virtual bool is_curr_meas_allowed(Tango::AttReqType type);
 /**
- *    Attribute volt_level related methods
- *    Description: the voltage level in volts
+ *	Attribute volt_level related methods
+ *	Description: the voltage level in volts
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
-    virtual void read_volt_level(Tango::Attribute &attr);
-    virtual bool is_volt_level_allowed(Tango::AttReqType type);
+	virtual void read_volt_level(Tango::Attribute &attr);
+	virtual bool is_volt_level_allowed(Tango::AttReqType type);
 /**
- *    Attribute curr_level related methods
- *    Description: The current level in amps
+ *	Attribute curr_level related methods
+ *	Description: The current level in amps
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
-    virtual void read_curr_level(Tango::Attribute &attr);
-    virtual bool is_curr_level_allowed(Tango::AttReqType type);
+	virtual void read_curr_level(Tango::Attribute &attr);
+	virtual bool is_curr_level_allowed(Tango::AttReqType type);
 
 
-    //--------------------------------------------------------
-    /**
-     *    Method      : PowerSupply_PSW_3072::add_dynamic_attributes()
-     *    Description : Add dynamic attributes if any.
-     */
-    //--------------------------------------------------------
-    void add_dynamic_attributes();
+	//--------------------------------------------------------
+	/**
+	 *	Method      : PowerSupply_PSW_3072::add_dynamic_attributes()
+	 *	Description : Add dynamic attributes if any.
+	 */
+	//--------------------------------------------------------
+	void add_dynamic_attributes();
 
 
 
-//    pipe related methods
+//	pipe related methods
 public:
-    //    Pipe PipeAttrs
-    bool is_PipeAttrs_allowed(Tango::PipeReqType);
-    void read_PipeAttrs(Tango::Pipe &);
+	//	Pipe PipeAttrs
+	bool is_PipeAttrs_allowed(Tango::PipeReqType);
+	void read_PipeAttrs(Tango::Pipe &);
 
-//    Command related methods
+//	Command related methods
 public:
-    /**
-     *    Command MeasureUpdate related method
-     *    Description: Takes a measurement and updates the average output current and voltage
-     *
-     */
-    virtual void measure_update();
-    virtual bool is_MeasureUpdate_allowed(const CORBA::Any &any);
-    /**
-     *    Command On related method
-     *    Description: Turns the output on.
-     *
-     */
-    virtual void on();
-    virtual bool is_On_allowed(const CORBA::Any &any);
-    /**
-     *    Command Off related method
-     *    Description: Turns the output off.
-     *
-     */
-    virtual void off();
-    virtual bool is_Off_allowed(const CORBA::Any &any);
-    /**
-     *    Command SetVoltageLevel related method
-     *    Description: Sets the voltage level in volts.
-     *
-     *    @param argin Voltage level in volts
-     */
-    virtual void set_voltage_level(Tango::DevDouble argin);
-    virtual bool is_SetVoltageLevel_allowed(const CORBA::Any &any);
-    /**
-     *    Command SetCurrentLevel related method
-     *    Description: Sets or queries the current level in amps.
-     *
-     *    @param argin The current level in amps.
-     */
-    virtual void set_current_level(Tango::DevDouble argin);
-    virtual bool is_SetCurrentLevel_allowed(const CORBA::Any &any);
-    /**
-     *    Command UpdateCurrVoltLevels related method
-     *    Description: Queries the current level in amps and the voltage level in volts.
-     *
-     */
-    virtual void update_curr_volt_levels();
-    virtual bool is_UpdateCurrVoltLevels_allowed(const CORBA::Any &any);
-    /**
-     *    Command SetCurrVoltLevels related method
-     *    Description: Sets the current and volt levels in amps.
-     *
-     *    @param argin arg[0] cuurent level
-     *               arg[1] volt level
-     */
-    virtual void set_curr_volt_levels(const Tango::DevVarDoubleArray *argin);
-    virtual bool is_SetCurrVoltLevels_allowed(const CORBA::Any &any);
+	/**
+	 *	Command MeasureUpdate related method
+	 *	Description: Takes a measurement and updates the average output current and voltage
+	 *
+	 */
+	virtual void measure_update();
+	virtual bool is_MeasureUpdate_allowed(const CORBA::Any &any);
+	/**
+	 *	Command On related method
+	 *	Description: Turns the output on.
+	 *
+	 */
+	virtual void on();
+	virtual bool is_On_allowed(const CORBA::Any &any);
+	/**
+	 *	Command Off related method
+	 *	Description: Turns the output off.
+	 *
+	 */
+	virtual void off();
+	virtual bool is_Off_allowed(const CORBA::Any &any);
+	/**
+	 *	Command SetVoltageLevel related method
+	 *	Description: Sets the voltage level in volts.
+	 *
+	 *	@param argin Voltage level in volts
+	 */
+	virtual void set_voltage_level(Tango::DevDouble argin);
+	virtual bool is_SetVoltageLevel_allowed(const CORBA::Any &any);
+	/**
+	 *	Command SetCurrentLevel related method
+	 *	Description: Sets or queries the current level in amps.
+	 *
+	 *	@param argin The current level in amps.
+	 */
+	virtual void set_current_level(Tango::DevDouble argin);
+	virtual bool is_SetCurrentLevel_allowed(const CORBA::Any &any);
+	/**
+	 *	Command UpdateCurrVoltLevels related method
+	 *	Description: Queries the current level in amps and the voltage level in volts.
+	 *
+	 */
+	virtual void update_curr_volt_levels();
+	virtual bool is_UpdateCurrVoltLevels_allowed(const CORBA::Any &any);
+	/**
+	 *	Command SetCurrVoltLevels related method
+	 *	Description: Sets the current and volt levels in amps.
+	 *
+	 *	@param argin arg[0] cuurent level
+	 *               arg[1] volt level
+	 */
+	virtual void set_curr_volt_levels(const Tango::DevVarDoubleArray *argin);
+	virtual bool is_SetCurrVoltLevels_allowed(const CORBA::Any &any);
 
 
-    //--------------------------------------------------------
-    /**
-     *    Method      : PowerSupply_PSW_3072::add_dynamic_commands()
-     *    Description : Add dynamic commands if any.
-     */
-    //--------------------------------------------------------
-    void add_dynamic_commands();
+	//--------------------------------------------------------
+	/**
+	 *	Method      : PowerSupply_PSW_3072::add_dynamic_commands()
+	 *	Description : Add dynamic commands if any.
+	 */
+	//--------------------------------------------------------
+	void add_dynamic_commands();
 
 /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::Additional Method prototypes) ENABLED START -----*/
 
@@ -295,15 +295,15 @@ public:
     std::pair<Tango::DevDouble, Tango::DevDouble> getValuesFromResponse(string);
     std::pair<Tango::DevDouble, Tango::DevDouble> getValuesOfCurrAndVolt(string);
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::Additional Method prototypes
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Additional Method prototypes
 };
 
 /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::Additional Classes Definitions) ENABLED START -----*/
 
 //    Additional Classes Definitions
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::Additional Classes Definitions
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::Additional Classes Definitions
 
-}    //    End of namespace
+}	//	End of namespace
 
-#endif   //    PowerSupply_PSW_3072_H
+#endif   //	PowerSupply_PSW_3072_H

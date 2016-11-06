@@ -64,52 +64,52 @@ namespace PowerSupply_PSW_3072_ns
 class volt_measAttrib: public Tango::Attr
 {
 public:
-    volt_measAttrib():Attr("volt_meas",
-            Tango::DEV_DOUBLE, Tango::READ) {};
-    ~volt_measAttrib() {};
-    virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-        {(static_cast<PowerSupply_PSW_3072 *>(dev))->read_volt_meas(att);}
-    virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-        {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_volt_meas_allowed(ty);}
+	volt_measAttrib():Attr("volt_meas",
+			Tango::DEV_DOUBLE, Tango::READ) {};
+	~volt_measAttrib() {};
+	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
+		{(static_cast<PowerSupply_PSW_3072 *>(dev))->read_volt_meas(att);}
+	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
+		{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_volt_meas_allowed(ty);}
 };
 
 //	Attribute curr_meas class definition
 class curr_measAttrib: public Tango::Attr
 {
 public:
-    curr_measAttrib():Attr("curr_meas",
-            Tango::DEV_DOUBLE, Tango::READ) {};
-    ~curr_measAttrib() {};
-    virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-        {(static_cast<PowerSupply_PSW_3072 *>(dev))->read_curr_meas(att);}
-    virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-        {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_curr_meas_allowed(ty);}
+	curr_measAttrib():Attr("curr_meas",
+			Tango::DEV_DOUBLE, Tango::READ) {};
+	~curr_measAttrib() {};
+	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
+		{(static_cast<PowerSupply_PSW_3072 *>(dev))->read_curr_meas(att);}
+	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
+		{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_curr_meas_allowed(ty);}
 };
 
 //	Attribute volt_level class definition
 class volt_levelAttrib: public Tango::Attr
 {
 public:
-    volt_levelAttrib():Attr("volt_level",
-            Tango::DEV_DOUBLE, Tango::READ) {};
-    ~volt_levelAttrib() {};
-    virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-        {(static_cast<PowerSupply_PSW_3072 *>(dev))->read_volt_level(att);}
-    virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-        {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_volt_level_allowed(ty);}
+	volt_levelAttrib():Attr("volt_level",
+			Tango::DEV_DOUBLE, Tango::READ) {};
+	~volt_levelAttrib() {};
+	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
+		{(static_cast<PowerSupply_PSW_3072 *>(dev))->read_volt_level(att);}
+	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
+		{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_volt_level_allowed(ty);}
 };
 
 //	Attribute curr_level class definition
 class curr_levelAttrib: public Tango::Attr
 {
 public:
-    curr_levelAttrib():Attr("curr_level",
-            Tango::DEV_DOUBLE, Tango::READ) {};
-    ~curr_levelAttrib() {};
-    virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
-        {(static_cast<PowerSupply_PSW_3072 *>(dev))->read_curr_level(att);}
-    virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
-        {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_curr_level_allowed(ty);}
+	curr_levelAttrib():Attr("curr_level",
+			Tango::DEV_DOUBLE, Tango::READ) {};
+	~curr_levelAttrib() {};
+	virtual void read(Tango::DeviceImpl *dev,Tango::Attribute &att)
+		{(static_cast<PowerSupply_PSW_3072 *>(dev))->read_curr_level(att);}
+	virtual bool is_allowed(Tango::DeviceImpl *dev,Tango::AttReqType ty)
+		{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_curr_level_allowed(ty);}
 };
 
 
@@ -120,15 +120,15 @@ public:
 class PipeAttrsClass: public Tango::Pipe
 {
 public:
-    PipeAttrsClass(const string &name, Tango::DispLevel level)
-        :Pipe(name, level) {};
+	PipeAttrsClass(const string &name, Tango::DispLevel level)
+		:Pipe(name, level) {};
 
-    ~PipeAttrsClass() {};
+	~PipeAttrsClass() {};
 
-    virtual bool is_allowed (Tango::DeviceImpl *dev,Tango::PipeReqType _prt)
-        {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_PipeAttrs_allowed(_prt);}
-    virtual void read(Tango::DeviceImpl *dev)
-        {(static_cast<PowerSupply_PSW_3072 *>(dev))->read_PipeAttrs(*this);}
+	virtual bool is_allowed (Tango::DeviceImpl *dev,Tango::PipeReqType _prt)
+		{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_PipeAttrs_allowed(_prt);}
+	virtual void read(Tango::DeviceImpl *dev)
+		{(static_cast<PowerSupply_PSW_3072 *>(dev))->read_PipeAttrs(*this);}
 };
 
 
@@ -139,161 +139,161 @@ public:
 class MeasureUpdateClass : public Tango::Command
 {
 public:
-    MeasureUpdateClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	MeasureUpdateClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    MeasureUpdateClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~MeasureUpdateClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_MeasureUpdate_allowed(any);}
+	MeasureUpdateClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~MeasureUpdateClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_MeasureUpdate_allowed(any);}
 };
 
 //	Command On class definition
 class OnClass : public Tango::Command
 {
 public:
-    OnClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	OnClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    OnClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~OnClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_On_allowed(any);}
+	OnClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~OnClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_On_allowed(any);}
 };
 
 //	Command Off class definition
 class OffClass : public Tango::Command
 {
 public:
-    OffClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	OffClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    OffClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~OffClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_Off_allowed(any);}
+	OffClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~OffClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_Off_allowed(any);}
 };
 
 //	Command SetVoltageLevel class definition
 class SetVoltageLevelClass : public Tango::Command
 {
 public:
-    SetVoltageLevelClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	SetVoltageLevelClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    SetVoltageLevelClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~SetVoltageLevelClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetVoltageLevel_allowed(any);}
+	SetVoltageLevelClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~SetVoltageLevelClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetVoltageLevel_allowed(any);}
 };
 
 //	Command SetCurrentLevel class definition
 class SetCurrentLevelClass : public Tango::Command
 {
 public:
-    SetCurrentLevelClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	SetCurrentLevelClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    SetCurrentLevelClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~SetCurrentLevelClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetCurrentLevel_allowed(any);}
+	SetCurrentLevelClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~SetCurrentLevelClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetCurrentLevel_allowed(any);}
 };
 
 //	Command UpdateCurrVoltLevels class definition
 class UpdateCurrVoltLevelsClass : public Tango::Command
 {
 public:
-    UpdateCurrVoltLevelsClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	UpdateCurrVoltLevelsClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    UpdateCurrVoltLevelsClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~UpdateCurrVoltLevelsClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_UpdateCurrVoltLevels_allowed(any);}
+	UpdateCurrVoltLevelsClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~UpdateCurrVoltLevelsClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_UpdateCurrVoltLevels_allowed(any);}
 };
 
 //	Command SetCurrVoltLevels class definition
 class SetCurrVoltLevelsClass : public Tango::Command
 {
 public:
-    SetCurrVoltLevelsClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out,
-                   const char        *in_desc,
-                   const char        *out_desc,
-                   Tango::DispLevel  level)
-    :Command(name,in,out,in_desc,out_desc, level)	{};
+	SetCurrVoltLevelsClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out,
+				   const char        *in_desc,
+				   const char        *out_desc,
+				   Tango::DispLevel  level)
+	:Command(name,in,out,in_desc,out_desc, level)	{};
 
-    SetCurrVoltLevelsClass(const char   *name,
-                   Tango::CmdArgType in,
-                   Tango::CmdArgType out)
-    :Command(name,in,out)	{};
-    ~SetCurrVoltLevelsClass() {};
-
-    virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
-    virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
-    {return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetCurrVoltLevels_allowed(any);}
+	SetCurrVoltLevelsClass(const char   *name,
+	               Tango::CmdArgType in,
+				   Tango::CmdArgType out)
+	:Command(name,in,out)	{};
+	~SetCurrVoltLevelsClass() {};
+	
+	virtual CORBA::Any *execute (Tango::DeviceImpl *dev, const CORBA::Any &any);
+	virtual bool is_allowed (Tango::DeviceImpl *dev, const CORBA::Any &any)
+	{return (static_cast<PowerSupply_PSW_3072 *>(dev))->is_SetCurrVoltLevels_allowed(any);}
 };
 
 
@@ -307,43 +307,43 @@ class __declspec(dllexport)  PowerSupply_PSW_3072Class : public Tango::DeviceCla
 class PowerSupply_PSW_3072Class : public Tango::DeviceClass
 #endif
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072Class::Additionnal DServer data members) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072Class::Additionnal DServer data members) ENABLED START -----*/
 
 
     /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072Class::Additionnal DServer data members
 
-    public:
-        //	write class properties data members
-        Tango::DbData	cl_prop;
-        Tango::DbData	cl_def_prop;
-        Tango::DbData	dev_def_prop;
-
-        //	Method prototypes
-        static PowerSupply_PSW_3072Class *init(const char *);
-        static PowerSupply_PSW_3072Class *instance();
-        ~PowerSupply_PSW_3072Class();
-        Tango::DbDatum	get_class_property(string &);
-        Tango::DbDatum	get_default_device_property(string &);
-        Tango::DbDatum	get_default_class_property(string &);
-
-    protected:
-        PowerSupply_PSW_3072Class(string &);
-        static PowerSupply_PSW_3072Class *_instance;
-        void command_factory();
-        void attribute_factory(vector<Tango::Attr *> &);
-        void pipe_factory();
-        void write_class_property();
-        void set_default_property();
-        void get_class_property();
-        string get_cvstag();
-        string get_cvsroot();
-
-    private:
-        void device_factory(const Tango::DevVarStringArray *);
-        void create_static_attribute_list(vector<Tango::Attr *> &);
-        void erase_dynamic_attributes(const Tango::DevVarStringArray *,vector<Tango::Attr *> &);
-        vector<string>	defaultAttList;
-        Tango::Attr *get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname);
+	public:
+		//	write class properties data members
+		Tango::DbData	cl_prop;
+		Tango::DbData	cl_def_prop;
+		Tango::DbData	dev_def_prop;
+	
+		//	Method prototypes
+		static PowerSupply_PSW_3072Class *init(const char *);
+		static PowerSupply_PSW_3072Class *instance();
+		~PowerSupply_PSW_3072Class();
+		Tango::DbDatum	get_class_property(string &);
+		Tango::DbDatum	get_default_device_property(string &);
+		Tango::DbDatum	get_default_class_property(string &);
+	
+	protected:
+		PowerSupply_PSW_3072Class(string &);
+		static PowerSupply_PSW_3072Class *_instance;
+		void command_factory();
+		void attribute_factory(vector<Tango::Attr *> &);
+		void pipe_factory();
+		void write_class_property();
+		void set_default_property();
+		void get_class_property();
+		string get_cvstag();
+		string get_cvsroot();
+	
+	private:
+		void device_factory(const Tango::DevVarStringArray *);
+		void create_static_attribute_list(vector<Tango::Attr *> &);
+		void erase_dynamic_attributes(const Tango::DevVarStringArray *,vector<Tango::Attr *> &);
+		vector<string>	defaultAttList;
+		Tango::Attr *get_attr_object_by_name(vector<Tango::Attr *> &att_list, string attname);
 };
 
 }	//	End of namespace

@@ -46,7 +46,7 @@ static const char *RcsId = "$Id:  $";
 
 
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072.cpp
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072.cpp
 
 /**
  *  PowerSupply_PSW_3072 class description:
@@ -73,10 +73,10 @@ static const char *RcsId = "$Id:  $";
 //================================================================
 //  Attributes managed are:
 //================================================================
-//  volt_meas   |  Tango::DevDouble    Scalar
-//  curr_meas   |  Tango::DevDouble    Scalar
-//  volt_level  |  Tango::DevDouble    Scalar
-//  curr_level  |  Tango::DevDouble    Scalar
+//  volt_meas   |  Tango::DevDouble	Scalar
+//  curr_meas   |  Tango::DevDouble	Scalar
+//  volt_level  |  Tango::DevDouble	Scalar
+//  curr_level  |  Tango::DevDouble	Scalar
 //================================================================
 
 namespace PowerSupply_PSW_3072_ns
@@ -85,86 +85,86 @@ namespace PowerSupply_PSW_3072_ns
 
 //    static initializations
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::namespace_starting
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::namespace_starting
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::PowerSupply_PSW_3072()
- *    Description : Constructors for a Tango device
+ *	Method      : PowerSupply_PSW_3072::PowerSupply_PSW_3072()
+ *	Description : Constructors for a Tango device
  *                implementing the classPowerSupply_PSW_3072
  */
 //--------------------------------------------------------
 PowerSupply_PSW_3072::PowerSupply_PSW_3072(Tango::DeviceClass *cl, string &s)
  : TANGO_BASE_CLASS(cl, s.c_str())
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::constructor_1) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::constructor_1) ENABLED START -----*/
     init_device();
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::constructor_1
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::constructor_1
 }
 //--------------------------------------------------------
 PowerSupply_PSW_3072::PowerSupply_PSW_3072(Tango::DeviceClass *cl, const char *s)
  : TANGO_BASE_CLASS(cl, s)
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::constructor_2) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::constructor_2) ENABLED START -----*/
     init_device();
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::constructor_2
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::constructor_2
 }
 //--------------------------------------------------------
 PowerSupply_PSW_3072::PowerSupply_PSW_3072(Tango::DeviceClass *cl, const char *s, const char *d)
  : TANGO_BASE_CLASS(cl, s, d)
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::constructor_3) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::constructor_3) ENABLED START -----*/
     init_device();
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::constructor_3
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::constructor_3
 }
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::delete_device()
- *    Description : will be called at device destruction or at init command
+ *	Method      : PowerSupply_PSW_3072::delete_device()
+ *	Description : will be called at device destruction or at init command
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::delete_device()
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::delete_device() " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::delete_device) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::delete_device() " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::delete_device) ENABLED START -----*/
 
     //    Delete device allocated objects
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::delete_device
-    delete[] attr_volt_meas_read;
-    delete[] attr_curr_meas_read;
-    delete[] attr_volt_level_read;
-    delete[] attr_curr_level_read;
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::delete_device
+	delete[] attr_volt_meas_read;
+	delete[] attr_curr_meas_read;
+	delete[] attr_volt_level_read;
+	delete[] attr_curr_level_read;
 }
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::init_device()
- *    Description : will be called at device initialization.
+ *	Method      : PowerSupply_PSW_3072::init_device()
+ *	Description : will be called at device initialization.
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::init_device()
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::init_device() create device " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::init_device_before) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::init_device() create device " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::init_device_before) ENABLED START -----*/
 
     //    Initialization before get_device_property() call
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::init_device_before
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::init_device_before
+	
 
-
-    //    Get the device properties from database
-    get_device_property();
-
-    attr_volt_meas_read = new Tango::DevDouble[1];
-    attr_curr_meas_read = new Tango::DevDouble[1];
-    attr_volt_level_read = new Tango::DevDouble[1];
-    attr_curr_level_read = new Tango::DevDouble[1];
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::init_device) ENABLED START -----*/
+	//	Get the device properties from database
+	get_device_property();
+	
+	attr_volt_meas_read = new Tango::DevDouble[1];
+	attr_curr_meas_read = new Tango::DevDouble[1];
+	attr_volt_level_read = new Tango::DevDouble[1];
+	attr_curr_level_read = new Tango::DevDouble[1];
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::init_device) ENABLED START -----*/
 
     attr_curr_level_read[0] = -1;
     attr_volt_level_read[0] = -1;
@@ -189,187 +189,187 @@ void PowerSupply_PSW_3072::init_device()
     
     check_psstate();
     //updateCurrVoltLevels();
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::init_device
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::init_device
 }
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::get_device_property()
- *    Description : Read database to initialize property data members.
+ *	Method      : PowerSupply_PSW_3072::get_device_property()
+ *	Description : Read database to initialize property data members.
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::get_device_property()
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::get_device_property_before) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::get_device_property_before) ENABLED START -----*/
 
     //    Initialize property data members
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::get_device_property_before
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::get_device_property_before
 
 
-    //    Read device properties from database.
-    Tango::DbData    dev_prop;
-    dev_prop.push_back(Tango::DbDatum("Socket"));
+	//	Read device properties from database.
+	Tango::DbData	dev_prop;
+	dev_prop.push_back(Tango::DbDatum("Socket"));
 
-    //    is there at least one property to be read ?
-    if (dev_prop.size()>0)
-    {
-        //    Call database and extract values
-        if (Tango::Util::instance()->_UseDb==true)
-            get_db_device()->get_property(dev_prop);
+	//	is there at least one property to be read ?
+	if (dev_prop.size()>0)
+	{
+		//	Call database and extract values
+		if (Tango::Util::instance()->_UseDb==true)
+			get_db_device()->get_property(dev_prop);
+	
+		//	get instance on PowerSupply_PSW_3072Class to get class property
+		Tango::DbDatum	def_prop, cl_prop;
+		PowerSupply_PSW_3072Class	*ds_class =
+			(static_cast<PowerSupply_PSW_3072Class *>(get_device_class()));
+		int	i = -1;
 
-        //    get instance on PowerSupply_PSW_3072Class to get class property
-        Tango::DbDatum    def_prop, cl_prop;
-        PowerSupply_PSW_3072Class    *ds_class =
-            (static_cast<PowerSupply_PSW_3072Class *>(get_device_class()));
-        int    i = -1;
+		//	Try to initialize Socket from class property
+		cl_prop = ds_class->get_class_property(dev_prop[++i].name);
+		if (cl_prop.is_empty()==false)	cl_prop  >>  socket;
+		else {
+			//	Try to initialize Socket from default device value
+			def_prop = ds_class->get_default_device_property(dev_prop[i].name);
+			if (def_prop.is_empty()==false)	def_prop  >>  socket;
+		}
+		//	And try to extract Socket value from database
+		if (dev_prop[i].is_empty()==false)	dev_prop[i]  >>  socket;
 
-        //    Try to initialize Socket from class property
-        cl_prop = ds_class->get_class_property(dev_prop[++i].name);
-        if (cl_prop.is_empty()==false)    cl_prop  >>  socket;
-        else {
-            //    Try to initialize Socket from default device value
-            def_prop = ds_class->get_default_device_property(dev_prop[i].name);
-            if (def_prop.is_empty()==false)    def_prop  >>  socket;
-        }
-        //    And try to extract Socket value from database
-        if (dev_prop[i].is_empty()==false)    dev_prop[i]  >>  socket;
+	}
 
-    }
-
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::get_device_property_after) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::get_device_property_after) ENABLED START -----*/
 
     //    Check device property data members init
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::get_device_property_after
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::get_device_property_after
 }
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::always_executed_hook()
- *    Description : method always executed before any command is executed
+ *	Method      : PowerSupply_PSW_3072::always_executed_hook()
+ *	Description : method always executed before any command is executed
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::always_executed_hook()
 {
-    //DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
+	//DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
 
     // ??? if check_socket_state() ?
     //check_psstate();
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::always_executed_hook
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::always_executed_hook
 }
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::read_attr_hardware()
- *    Description : Hardware acquisition for attributes
+ *	Method      : PowerSupply_PSW_3072::read_attr_hardware()
+ *	Description : Hardware acquisition for attributes
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_attr_hardware(TANGO_UNUSED(vector<long> &attr_list))
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_attr_hardware) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_attr_hardware(vector<long> &attr_list) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_attr_hardware) ENABLED START -----*/
 
     //    Add your own code
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::read_attr_hardware
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_attr_hardware
 }
 
 //--------------------------------------------------------
 /**
- *    Read attribute volt_meas related method
- *    Description: the output voltage
+ *	Read attribute volt_meas related method
+ *	Description: the output voltage
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_volt_meas(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::read_volt_meas(Tango::Attribute &attr) entering... " << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_volt_meas) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_volt_meas(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_volt_meas) ENABLED START -----*/
     //    Set the attribute value
     attr.set_value(attr_volt_meas_read);
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::read_volt_meas
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_volt_meas
 }
 //--------------------------------------------------------
 /**
- *    Read attribute curr_meas related method
- *    Description: the output current
+ *	Read attribute curr_meas related method
+ *	Description: the output current
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_curr_meas(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::read_curr_meas(Tango::Attribute &attr) entering... " << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_curr_meas) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_curr_meas(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_curr_meas) ENABLED START -----*/
     //    Set the attribute value
     attr.set_value(attr_curr_meas_read);
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::read_curr_meas
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_curr_meas
 }
 //--------------------------------------------------------
 /**
- *    Read attribute volt_level related method
- *    Description: the voltage level in volts
+ *	Read attribute volt_level related method
+ *	Description: the voltage level in volts
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_volt_level(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::read_volt_level(Tango::Attribute &attr) entering... " << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_volt_level) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_volt_level(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_volt_level) ENABLED START -----*/
     //    Set the attribute value
     attr.set_value(attr_volt_level_read);
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::read_volt_level
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_volt_level
 }
 //--------------------------------------------------------
 /**
- *    Read attribute curr_level related method
- *    Description: The current level in amps
+ *	Read attribute curr_level related method
+ *	Description: The current level in amps
  *
- *    Data type:    Tango::DevDouble
- *    Attr type:    Scalar
+ *	Data type:	Tango::DevDouble
+ *	Attr type:	Scalar
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_curr_level(Tango::Attribute &attr)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::read_curr_level(Tango::Attribute &attr) entering... " << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_curr_level) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_curr_level(Tango::Attribute &attr) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_curr_level) ENABLED START -----*/
     //    Set the attribute value
     attr.set_value(attr_curr_level_read);
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::read_curr_level
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_curr_level
 }
 
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::add_dynamic_attributes()
- *    Description : Create the dynamic attributes if any
+ *	Method      : PowerSupply_PSW_3072::add_dynamic_attributes()
+ *	Description : Create the dynamic attributes if any
  *                for specified device.
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::add_dynamic_attributes()
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::add_dynamic_attributes) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::add_dynamic_attributes) ENABLED START -----*/
 
     //    Add your own code to create and add dynamic attributes if any
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::add_dynamic_attributes
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::add_dynamic_attributes
 }
 
 //--------------------------------------------------------
 /**
- *    Read pipe PipeAttrs related method
- *    Description: name_of_device - The name of device
+ *	Read pipe PipeAttrs related method
+ *	Description: name_of_device - The name of device
  *               volt_meas - the output voltage
  *               curr_meas - the output current
  *               volt_level - the voltage level in volts
@@ -381,8 +381,8 @@ void PowerSupply_PSW_3072::add_dynamic_attributes()
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe) entering... " << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_PipeAttrs) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe) entering... " << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::read_PipeAttrs) ENABLED START -----*/
 
     pipe.set_root_blob_name("pswData");
     vector<string> names{
@@ -406,19 +406,19 @@ void PowerSupply_PSW_3072::read_PipeAttrs(Tango::Pipe &pipe)
     }
 
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::read_PipeAttrs
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::read_PipeAttrs
 }
 //--------------------------------------------------------
 /**
- *    Command MeasureUpdate related method
- *    Description: Takes a measurement and updates the average output current and voltage
+ *	Command MeasureUpdate related method
+ *	Description: Takes a measurement and updates the average output current and voltage
  *
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::measure_update()
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::MeasureUpdate()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::measure_update) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::MeasureUpdate()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::measure_update) ENABLED START -----*/
     //// ??? test begin
     //check_psstate();
     //// ??? test end
@@ -428,19 +428,19 @@ void PowerSupply_PSW_3072::measure_update()
     attr_volt_meas_read[0] = currVolt.second;
 
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::measure_update
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::measure_update
 }
 //--------------------------------------------------------
 /**
- *    Command On related method
- *    Description: Turns the output on.
+ *	Command On related method
+ *	Description: Turns the output on.
  *
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::on()
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::On()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::on) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::On()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::on) ENABLED START -----*/
     Tango::DeviceData input;
     input << OUTPUTMODEON;
     try {
@@ -452,19 +452,19 @@ void PowerSupply_PSW_3072::on()
         fromException(e);
     }
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::on
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::on
 }
 //--------------------------------------------------------
 /**
- *    Command Off related method
- *    Description: Turns the output off.
+ *	Command Off related method
+ *	Description: Turns the output off.
  *
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::off()
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::Off()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::off) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::Off()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::off) ENABLED START -----*/
 
     Tango::DeviceData input;
     input << OUTPUTMODEOFF;
@@ -478,51 +478,51 @@ void PowerSupply_PSW_3072::off()
     }
 
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::off
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::off
 }
 //--------------------------------------------------------
 /**
- *    Command SetVoltageLevel related method
- *    Description: Sets the voltage level in volts.
+ *	Command SetVoltageLevel related method
+ *	Description: Sets the voltage level in volts.
  *
- *    @param argin Voltage level in volts
+ *	@param argin Voltage level in volts
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::set_voltage_level(Tango::DevDouble argin)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::SetVoltageLevel()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_voltage_level) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::SetVoltageLevel()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_voltage_level) ENABLED START -----*/
     forSettingOfLevels(argin, SETVOLTLEVEL);
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::set_voltage_level
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::set_voltage_level
 }
 //--------------------------------------------------------
 /**
- *    Command SetCurrentLevel related method
- *    Description: Sets or queries the current level in amps.
+ *	Command SetCurrentLevel related method
+ *	Description: Sets or queries the current level in amps.
  *
- *    @param argin The current level in amps.
+ *	@param argin The current level in amps.
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::set_current_level(Tango::DevDouble argin)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::SetCurrentLevel()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_current_level) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::SetCurrentLevel()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_current_level) ENABLED START -----*/
     forSettingOfLevels(argin, SETCURLEVEL);
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::set_current_level
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::set_current_level
 }
 //--------------------------------------------------------
 /**
- *    Command UpdateCurrVoltLevels related method
- *    Description: Queries the current level in amps and the voltage level in volts.
+ *	Command UpdateCurrVoltLevels related method
+ *	Description: Queries the current level in amps and the voltage level in volts.
  *
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::update_curr_volt_levels()
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::UpdateCurrVoltLevels()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::update_curr_volt_levels) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::UpdateCurrVoltLevels()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::update_curr_volt_levels) ENABLED START -----*/
 
     if (isSocketOn) {
         auto currVolt = getValuesOfCurrAndVolt(GETCURRVOLTLEVEL);
@@ -539,21 +539,21 @@ void PowerSupply_PSW_3072::update_curr_volt_levels()
         attr_volt_meas_read[0] = -1;
     }
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::update_curr_volt_levels
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::update_curr_volt_levels
 }
 //--------------------------------------------------------
 /**
- *    Command SetCurrVoltLevels related method
- *    Description: Sets the current and volt levels in amps.
+ *	Command SetCurrVoltLevels related method
+ *	Description: Sets the current and volt levels in amps.
  *
- *    @param argin arg[0] cuurent level
+ *	@param argin arg[0] cuurent level
  *               arg[1] volt level
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::set_curr_volt_levels(const Tango::DevVarDoubleArray *argin)
 {
-    DEBUG_STREAM << "PowerSupply_PSW_3072::SetCurrVoltLevels()  - " << device_name << endl;
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_curr_volt_levels) ENABLED START -----*/
+	DEBUG_STREAM << "PowerSupply_PSW_3072::SetCurrVoltLevels()  - " << device_name << endl;
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::set_curr_volt_levels) ENABLED START -----*/
 
     if (argin->length() < 2) {
         ERROR_STREAM << " Must be two arguments " << endl;
@@ -574,22 +574,22 @@ void PowerSupply_PSW_3072::set_curr_volt_levels(const Tango::DevVarDoubleArray *
     }
 
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::set_curr_volt_levels
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::set_curr_volt_levels
 }
 //--------------------------------------------------------
 /**
- *    Method      : PowerSupply_PSW_3072::add_dynamic_commands()
- *    Description : Create the dynamic commands if any
+ *	Method      : PowerSupply_PSW_3072::add_dynamic_commands()
+ *	Description : Create the dynamic commands if any
  *                for specified device.
  */
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::add_dynamic_commands()
 {
-    /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::add_dynamic_commands) ENABLED START -----*/
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::add_dynamic_commands) ENABLED START -----*/
 
     //    Add your own code to create and add dynamic commands if any
 
-    /*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::add_dynamic_commands
+    /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::add_dynamic_commands
 }
 
 /*----- PROTECTED REGION ID(PowerSupply_PSW_3072::namespace_ending) ENABLED START -----*/
@@ -807,5 +807,5 @@ void PowerSupply_PSW_3072::reconnectSocket()
     }
 }
 
-/*----- PROTECTED REGION END -----*/    //    PowerSupply_PSW_3072::namespace_ending
-} //    namespace
+/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072::namespace_ending
+} //	namespace
