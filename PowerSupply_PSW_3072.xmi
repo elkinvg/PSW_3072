@@ -5,6 +5,10 @@
       <inheritances classname="Device_Impl" sourcePath=""/>
       <identification contact="at jinr.ru - elkin" author="elkin" emailDomain="jinr.ru" classFamily="PowerSupply" siteSpecific="" platform="All Platforms" bus="Socket" manufacturer="none" reference=""/>
     </description>
+    <classProperties name="TangoHost" description="tango://IP:port/">
+      <type xsi:type="pogoDsl:StringType"/>
+      <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>
+    </classProperties>
     <deviceProperties name="Socket" description="Socket Tango device name in format ``domain/family/member``">
       <type xsi:type="pogoDsl:StringType"/>
       <status abstract="false" inherited="false" concrete="true" concreteHere="true"/>

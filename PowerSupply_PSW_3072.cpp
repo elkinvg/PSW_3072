@@ -252,7 +252,7 @@ void PowerSupply_PSW_3072::get_device_property()
 //--------------------------------------------------------
 void PowerSupply_PSW_3072::always_executed_hook()
 {
-	//DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
+	DEBUG_STREAM << "PowerSupply_PSW_3072::always_executed_hook()  " << device_name << endl;
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072::always_executed_hook) ENABLED START -----*/
 
     // ??? if check_socket_state() ?

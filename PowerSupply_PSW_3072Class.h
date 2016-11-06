@@ -312,6 +312,10 @@ class PowerSupply_PSW_3072Class : public Tango::DeviceClass
 
     /*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072Class::Additionnal DServer data members
 
+	//	Class properties data members
+	public:
+		//	TangoHost:	tango://IP:port/
+		string	tangoHost;
 	public:
 		//	write class properties data members
 		Tango::DbData	cl_prop;

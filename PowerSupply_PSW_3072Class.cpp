@@ -86,6 +86,7 @@ PowerSupply_PSW_3072Class::PowerSupply_PSW_3072Class(string &s):Tango::DeviceCla
 {
 	cout2 << "Entering PowerSupply_PSW_3072Class constructor" << endl;
 	set_default_property();
+	get_class_property();
 	write_class_property();
 
 	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072Class::constructor) ENABLED START -----*/
@@ -340,6 +341,47 @@ Tango::DbDatum PowerSupply_PSW_3072Class::get_default_class_property(string &pro
 	return Tango::DbDatum(prop_name);
 }
 
+//--------------------------------------------------------
+/**
+ *	Method      : PowerSupply_PSW_3072Class::get_class_property()
+ *	Description : Read database to initialize class property data members.
+ */
+//--------------------------------------------------------
+void PowerSupply_PSW_3072Class::get_class_property()
+{
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072Class::get_class_property_before) ENABLED START -----*/
+	
+	//	Initialize class property data members
+	
+	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072Class::get_class_property_before
+	//	Read class properties from database.
+	cl_prop.push_back(Tango::DbDatum("TangoHost"));
+	
+	//	Call database and extract values
+	if (Tango::Util::instance()->_UseDb==true)
+		get_db_class()->get_property(cl_prop);
+	Tango::DbDatum	def_prop;
+	int	i = -1;
+
+	//	Try to extract TangoHost value
+	if (cl_prop[++i].is_empty()==false)	cl_prop[i]  >>  tangoHost;
+	else
+	{
+		//	Check default value for TangoHost
+		def_prop = get_default_class_property(cl_prop[i].name);
+		if (def_prop.is_empty()==false)
+		{
+			def_prop    >>  tangoHost;
+			cl_prop[i]  <<  tangoHost;
+		}
+	}
+	/*----- PROTECTED REGION ID(PowerSupply_PSW_3072Class::get_class_property_after) ENABLED START -----*/
+	
+	//	Check class property data members init
+	
+	/*----- PROTECTED REGION END -----*/	//	PowerSupply_PSW_3072Class::get_class_property_after
+
+}
 
 //--------------------------------------------------------
 /**
@@ -358,6 +400,19 @@ void PowerSupply_PSW_3072Class::set_default_property()
 	vector<string>	vect_data;
 
 	//	Set Default Class Properties
+	prop_name = "TangoHost";
+	prop_desc = "tango://IP:port/";
+	prop_def  = "";
+	vect_data.clear();
+	if (prop_def.length()>0)
+	{
+		Tango::DbDatum	data(prop_name);
+		data << vect_data ;
+		cl_def_prop.push_back(data);
+		add_wiz_class_prop(prop_name, prop_desc,  prop_def);
+	}
+	else
+		add_wiz_class_prop(prop_name, prop_desc);
 
 	//	Set Default device Properties
 	prop_name = "Socket";
